@@ -51,7 +51,7 @@ alias sgr="svn log -v -r $1"
 
 # Fortinet Shortcuts
 alias fsa='cd /opt/fsa'
-alias cdir='cd /opt/fsa && .fdev'
+alias cdir='cd /opt/fsa && ./fdev.sh'
 alias trunk='cd /opt/fsa/trunk'
 alias ctrunk='cd /opt/fsa/commit/trunk'
 alias trunk22='cd /opt/fsa/trunk2.2'
