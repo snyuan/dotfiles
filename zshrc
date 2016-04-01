@@ -1,9 +1,6 @@
-#
 # Executes commands at the start of an interactive session.
-#
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -30,6 +27,7 @@ alias se="vim ~/.zshrc"
 alias ss="source ~/.zshrc"
 alias mz="more ~/.zshrc"
 alias vv="vim ~/.vimrc"
+alias vz="vim ~/.zshrc"
 alias vp="vim patch.diff"
 alias vundle="vim +PluginInstall +qall"
 # alias vimplug="vim +PlugInstall +qall"
@@ -39,15 +37,16 @@ alias ff="find . -name"
 alias kk="rm -rf /root/.ssh/known_hosts"
 alias sz="sudo zsh"
 alias dl="cd ~/Downloads"
-alias cw="chown andy -R $1"
+alias cow="chown andy -R ./web"
+alias cow22="chown andy -R /opt/fsa/trunk2.2/web"
 
 # SVN commands
 alias sdf="svn diff --summarize"
 alias sup="svn update"
+alias ssm="svn st|grep M"
 alias sg="svn log --limit 3"
 alias sgl="svn log --limit $1"
 alias sgr="svn log -v -r $1"
-
 
 # Fortinet Shortcuts
 alias fsa='cd /opt/fsa'
@@ -57,7 +56,10 @@ alias ctrunk='cd /opt/fsa/commit/trunk'
 alias trunk22='cd /opt/fsa/trunk2.2'
 alias ctrunk22='cd /opt/fsa/commit/trunk2.2'
 alias sandbox='cd /opt/fsa/trunk/web/sandbox'
-alias fsadb='cd /opt/drive0/private/db'
+alias fsadb='cd /opt/fsa/drive0/private/db-install'
+alias guidb='sqlite3 /opt/fsa/drive0/private/db-install/FortiSandboxGUI.db'
+alias storage='cd /opt/fsa/Storage'
+alias rmstore='rm -fr /opt/fsa/Storage/*'
 alias pvt='cd /opt/fsa/drive0/private'
 alias ssh32="ssh admin@172.16.69.32"
 alias ssh34="ssh admin@172.16.69.34"

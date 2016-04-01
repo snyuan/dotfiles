@@ -44,7 +44,6 @@ Bundle 'klen/python-mode'
 Bundle 'SirVer/ultisnips'
 Bundle 't9md/vim-quickhl'
 " Bundle 'Lokaltog/vim-powerline'
-Bundle 'scrooloose/nerdcommenter'
 "..................................
 " vim-scripts repos
 Bundle 'YankRing.vim'
@@ -115,8 +114,10 @@ Bundle 'juneedahamed/svnj.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
 Bundle 'vim-scripts/dbext.vim'
+Bundle 'python_fold_compact'
 
-filetype plugin indent on
+call vundle#end()                        " required
+filetype plugin indent on                " required
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set clipboard+=unnamed
@@ -136,8 +137,8 @@ set number              " Show the line numbers on the left side.
 set formatoptions+=o    " Continue comment marker in new lines.
 set textwidth=0         " Hard-wrap long lines as you type them.
 set expandtab           " Insert spaces when TAB is pressed.
-set tabstop=2           " Render TABs using this many spaces.
-set shiftwidth=2        " Indentation amount for < and > commands.
+set tabstop=4           " Render TABs using this many spaces.
+set shiftwidth=4        " Indentation amount for < and > commands.
 
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
@@ -183,6 +184,7 @@ set clipboard+=unnamedplus
 set wrap
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/ag.vim
 
 set backupdir=~/.vim/backup
 set dir=~/.vim/swap
@@ -200,12 +202,25 @@ nnoremap <S-F9> :sbprevious<CR>
 colorscheme synic
 "colorscheme wombat
 
+" python-mode setting
+" Override go-to.definition key shortcut to Ctrl-]
+let g:pymode_rope_goto_definition_bind = "<C-]>"
+
+" Override run current python file key shortcut to Ctrl-Shift-e
+let g:pymode_run_bind = "<C-S-e>"
+
+" Override view python doc key shortcut to Ctrl-Shift-d
+let g:pymode_doc_bind = "<C-S-d>"
+let g:pymode_lint_config = '$HOME/.pylint.rc'
+let g:pymode_options_max_line_length = 120
+autocmd FileType python set colorcolumn=120
+
 "from Jared"
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_working_path_mode = '' " Stop messing with the path
 let g:ctrlp_match_window_bottom = 1
 let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|coverage\|vendor/bundle\|result\|build\|img'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|coverage\|vendor/bundle\|result\|build\|img\|pyc'
 
 let mapleader = ' '
 let g:airline_left_sep = ''
@@ -248,6 +263,8 @@ map <silent> gc :Gcommit<CR>
 map <silent> gC :Gcommit -a<CR>
 map <silent> gl :gitv<CR>
 map <silent> gs :Gstatus<CR>
+" search the word in current clipboard
+nnoremap <silent> <leader>g  /<C-R>"<CR>
 
 map <silent> <leader>ss :source ~/.vimrc<cr>
 map <silent> <leader>ee :e ~/.vimrc<cr>
@@ -335,14 +352,17 @@ let g:gist_post_private = 1
 "vim tricks"
 nnoremap <Leader>e :e<CR>
 nnoremap <Leader>w :w<CR>
+nnoremap <Leader>wa :w<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+
+" some key to delete not cut
+nnoremap <Leader>d "_d
+vnoremap <Leader>d "_d
+nnoremap <Leader>x "_x
+vnoremap <Leader>x "_x
+nnoremap <Leader>p "_dP
+vnoremap <Leader>p "_dP
 
 "relative number
 set number

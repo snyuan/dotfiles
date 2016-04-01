@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc zshrc"    # list of files/folders to symlink in homedir
+files="bashrc vimrc zshrc pylint.rc"    # list of files/folders to symlink in homedir
 
 ##########
 
