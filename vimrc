@@ -114,7 +114,8 @@ Bundle 'juneedahamed/svnj.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
 Bundle 'vim-scripts/dbext.vim'
-Bundle 'python_fold_compact'
+" Bundle 'python_fold_compact'
+Plugin 'vasconcelloslf/vim-interestingwords'
 
 call vundle#end()                        " required
 filetype plugin indent on                " required
@@ -166,6 +167,16 @@ set incsearch           " Incremental search.
 set gdefault            " Use 'g' flag by default with :s/foo/bar/.
 set magic               " Use 'magic' patterns (extended regular expressions).
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"https://gist.github.com/ayosec/4076380
+" When the cursor is hold on a word, that word is highlighted.
+" " When the cursor is moving, the highlight is hidden
+set updatetime=300
+au! CursorMoved * set nohlsearch
+au! CursorHold * set hlsearch | let @/='\<'.expand("<cword>").'\>'
+set hlsearch
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "vim
 set nu
 set ts=2                            "tab stop 2
@@ -195,10 +206,6 @@ set mouse=a
 set wildmode=longest,list
 set wildmenu
 
-set switchbuf=usetab
-nnoremap <F9> :sbnext<CR>
-nnoremap <S-F9> :sbprevious<CR>
-
 colorscheme synic
 "colorscheme wombat
 
@@ -214,6 +221,8 @@ let g:pymode_doc_bind = "<C-S-d>"
 let g:pymode_lint_config = '$HOME/.pylint.rc'
 let g:pymode_options_max_line_length = 120
 autocmd FileType python set colorcolumn=120
+highlight OverLength ctermbg=red ctermbg=white guibg=#592929
+match OverLength /\%121v.\+/
 
 "from Jared"
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -263,7 +272,7 @@ map <silent> gc :Gcommit<CR>
 map <silent> gC :Gcommit -a<CR>
 map <silent> gl :gitv<CR>
 map <silent> gs :Gstatus<CR>
-" search the word in current clipboard
+" search the word in current register
 nnoremap <silent> <leader>g  /<C-R>"<CR>
 
 map <silent> <leader>ss :source ~/.vimrc<cr>
@@ -284,6 +293,9 @@ map <F5> :SVNDiff<CR>
 map <F6> /Index: <CR> zz
 map <F7> :%y+ <CR>
 map <F8> :NERDTreeToggle<CR>
+set switchbuf=usetab
+map <F9> :sbnext<CR>
+map <S-F9> :sbprevious<CR>
 map <F11> :Ag <C-R><C-W> <C-R>=@% <CR><CR>
 map <F12> :Ag <C-R><C-W><CR>
 
@@ -363,6 +375,10 @@ nnoremap <Leader>x "_x
 vnoremap <Leader>x "_x
 nnoremap <Leader>p "_dP
 vnoremap <Leader>p "_dP
+" replace the word under cursor with yanked content
+nnoremap <Leader>p viw"0p
+vnoremap <Leader>p viw"0p
+
 
 "relative number
 set number
@@ -379,6 +395,7 @@ imap <C-c> <CR><Esc>O
 let g:ycm_add_preview_to_completeopt=0
 let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 " Platform

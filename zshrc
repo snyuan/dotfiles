@@ -10,6 +10,7 @@ fi
 # Customize to your needs...
 
 alias ll="ls -lh"
+alias sl="ls -lh"
 alias la="ls -A"
 alias cd..="cd .."
 alias cd...="cd ../.."
@@ -64,6 +65,7 @@ alias pvt='cd /opt/fsa/drive0/private'
 alias ssh32="ssh admin@172.16.69.32"
 alias ssh34="ssh admin@172.16.69.34"
 alias ssh90="ssh admin@172.16.92.90"
+alias ssh89="ssh admin@172.16.92.89"
 alias ssh96="ssh admin@172.16.69.96"
 alias ssh146="ssh admin@172.16.69.146"
 alias ssh154="ssh admin@172.16.69.154"
