@@ -122,6 +122,8 @@ filetype plugin indent on                " required
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set clipboard+=unnamed
+" Accessing the system clipboard share clipboard with system
+set clipboard=unnamedplus
 set guifont=Monaco:h9
 set gfw=YaHei\ Consolas\ Hybrid:h9
 set guifont=Consolas:h12
@@ -206,7 +208,8 @@ set mouse=a
 set wildmode=longest,list
 set wildmenu
 
-colorscheme synic
+" colorscheme synic
+colorscheme desert256
 "colorscheme wombat
 
 " python-mode setting
@@ -219,8 +222,8 @@ let g:pymode_run_bind = "<C-S-e>"
 " Override view python doc key shortcut to Ctrl-Shift-d
 let g:pymode_doc_bind = "<C-S-d>"
 let g:pymode_lint_config = '$HOME/.pylint.rc'
-let g:pymode_options_max_line_length = 120
-autocmd FileType python set colorcolumn=120
+let g:pymode_options_max_line_length = 100
+autocmd FileType python set colorcolumn=100
 highlight OverLength ctermbg=red ctermbg=white guibg=#592929
 match OverLength /\%121v.\+/
 
@@ -363,8 +366,8 @@ let g:gist_post_private = 1
 
 "vim tricks"
 nnoremap <Leader>e :e<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>wa :w<CR>
+nnoremap <Leader>w :wa<CR>
+nnoremap <Leader>wa :wa<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 
@@ -456,4 +459,4 @@ endif
 if MySys() == 'windows'
     source $VIMRUNTIME/mswin.vim
     behave mswin
-endif 
+endif
