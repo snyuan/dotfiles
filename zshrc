@@ -40,8 +40,10 @@ alias sz="sudo zsh"
 alias dl="cd ~/Downloads"
 alias cow="chown andy -R ./web"
 alias cow22="chown andy -R /opt/fsa/trunk2.2/web"
+alias cowtk="chown andy -R /opt/fsa/trunk/web"
 
 # SVN commands
+alias sd="svn diff"
 alias sdf="svn diff --summarize"
 alias sup="svn update"
 alias ssm="svn st|grep M"
@@ -53,10 +55,10 @@ alias sgr="svn log -v -r $1"
 # Fortinet Shortcuts
 alias fsa='cd /opt/fsa'
 alias cdir='cd /opt/fsa && ./fdev.sh'
-alias trunk='cd /opt/fsa/trunk'
-alias ctrunk='cd /opt/fsa/commit/trunk'
-alias trunk22='cd /opt/fsa/trunk2.2'
-alias ctrunk22='cd /opt/fsa/commit/trunk2.2'
+alias tk='cd /opt/fsa/trunk'
+alias ctk='cd /opt/fsa/commit/tk'
+alias tk22='cd /opt/fsa/trunk2.2'
+alias ctk22='cd /opt/fsa/commit/22'
 alias sandbox='cd /opt/fsa/trunk/web/sandbox'
 alias fsadb='cd /opt/fsa/drive0/private/db-install'
 alias guidb='sqlite3 /opt/fsa/drive0/private/db-install/FortiSandboxGUI.db'
@@ -71,3 +73,5 @@ alias ssh96="ssh admin@172.16.69.96"
 alias ssh146="ssh admin@172.16.69.146"
 alias ssh154="ssh admin@172.16.69.154"
 alias ssh155="ssh admin@172.16.69.155"
+alias ssh97="ssh admin@172.17.94.97"
+alias tel97="telnet 172.17.93.191 2043"
