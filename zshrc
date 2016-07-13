@@ -16,7 +16,9 @@ alias cd..="cd .."
 alias cd...="cd ../.."
 alias cd....="cd ../../.."
 alias cd.....="cd ../../../../"
-alias rm="rm -f"
+alias rm="/bin/rm -f"
+alias cp="/bin/cp"
+alias mv="/bin/mv"
  
 # Customize to your needs...
 # Shell Commands
@@ -52,26 +54,36 @@ alias sg="svn log --limit 3"
 alias sgl="svn log --limit $1"
 alias sgr="svn log -v -r $1"
 
+#ReviewBoard
+alias rd="rb_genco diff"
+alias rp="rb_genco post"
+
 # Fortinet Shortcuts
 alias fsa='cd /opt/fsa'
 alias cdir='cd /opt/fsa && ./fdev.sh'
 alias tk='cd /opt/fsa/trunk'
-alias ctk='cd /opt/fsa/commit/tk'
-alias tk22='cd /opt/fsa/trunk2.2'
-alias ctk22='cd /opt/fsa/commit/22'
+alias ctk='cd /opt/fsa/cm/tk'
+alias 22='cd /opt/fsa_old/trunk2.2'
+alias c22='cd /opt/fsa_old/cm/22'
 alias sandbox='cd /opt/fsa/trunk/web/sandbox'
 alias fsadb='cd /opt/fsa/drive0/private/db-install'
 alias guidb='sqlite3 /opt/fsa/drive0/private/db-install/FortiSandboxGUI.db'
 alias storage='cd /opt/fsa/Storage'
-alias rmstore='rm -fr /opt/fsa/Storage/* /opt/fsa/drive0/private/db-install/* /opt/fsa/drive0/private/statistics/*'
+alias rmst='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/drive0/private/db-install/* /opt/fsa/drive0/private/statistics/*'
+alias rmsto='/bin/rm -fr /opt/fsa_old/Storage/* /opt/fsa_old/drive0/private/db-install/* /opt/fsa_old/drive0/private/statistics/*'
 alias pvt='cd /opt/fsa/drive0/private'
 alias ssh32="ssh admin@172.16.69.32"
 alias ssh34="ssh admin@172.16.69.34"
 alias ssh90="ssh admin@172.16.92.90"
 alias ssh89="ssh admin@172.16.92.89"
 alias ssh96="ssh admin@172.16.69.96"
+alias ssh128="ssh admin@172.16.69.128"
+alias ssh142="ssh admin@172.16.69.142"
+alias ssh145="ssh admin@172.16.69.145"
 alias ssh146="ssh admin@172.16.69.146"
+alias ssh147="ssh admin@172.16.69.147"
 alias ssh154="ssh admin@172.16.69.154"
 alias ssh155="ssh admin@172.16.69.155"
+alias ssh215="ssh admin@172.16.69.215"
 alias ssh97="ssh admin@172.17.94.97"
 alias tel97="telnet 172.17.93.191 2043"

@@ -39,7 +39,7 @@ Plugin 'VundleVim/Vundle.vim'
 " original repos on github
 "
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'klen/python-mode'
+"Bundle 'klen/python-mode'
 "Bundle 'Valloric/ListToggle'
 Bundle 'SirVer/ultisnips'
 Bundle 't9md/vim-quickhl'
@@ -213,16 +213,16 @@ colorscheme desert256
 "colorscheme wombat
 
 " python-mode setting
-" Override go-to.definition key shortcut to Ctrl-]
-let g:pymode_rope_goto_definition_bind = "<C-]>"
+" override go-to.definition key shortcut to ctrl-]
+"let g:pymode_rope_goto_definition_bind = "<c-]>"
 
-" Override run current python file key shortcut to Ctrl-Shift-e
-let g:pymode_run_bind = "<C-S-e>"
+" override run current python file key shortcut to ctrl-shift-e
+"let g:pymode_run_bind = "<c-s-e>"
 
-" Override view python doc key shortcut to Ctrl-Shift-d
-let g:pymode_doc_bind = "<C-S-d>"
-let g:pymode_lint_config = '$HOME/.pylint.rc'
-let g:pymode_options_max_line_length = 100
+" override view python doc key shortcut to ctrl-shift-d
+"let g:pymode_doc_bind = "<c-s-d>"
+"let g:pymode_lint_config = '$HOME/.pylint.rc'
+"let g:pymode_options_max_line_length = 100
 autocmd FileType python set colorcolumn=100
 highlight OverLength ctermbg=red ctermbg=white guibg=#592929
 match OverLength /\%121v.\+/
@@ -376,8 +376,8 @@ nnoremap <Leader>d "_d
 vnoremap <Leader>d "_d
 nnoremap <Leader>x "_x
 vnoremap <Leader>x "_x
-nnoremap <Leader>p "_dP
-vnoremap <Leader>p "_dP
+nnoremap <Leader>p "_p
+vnoremap <Leader>p "_p
 " replace the word under cursor with yanked content
 nnoremap <Leader>p viw"0p
 vnoremap <Leader>p viw"0p
