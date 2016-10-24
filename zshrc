@@ -49,7 +49,9 @@ alias sd="svn diff"
 alias sdf="svn diff --summarize"
 alias sup="svn update"
 alias ssm="svn st|grep M"
+alias ssw="svn st web"
 alias sswm="svn st web|grep M"
+alias ssmw="svn st web|grep M"
 alias sg="svn log --limit 3"
 alias sgl="svn log --limit $1"
 alias sgr="svn log -v -r $1"
@@ -65,6 +67,8 @@ alias tk='cd /opt/fsa/trunk'
 alias ctk='cd /opt/fsa/cm/tk'
 alias 22='cd /opt/fsa_old/trunk2.2'
 alias c22='cd /opt/fsa_old/cm/22'
+alias 23='cd /opt/fsa/tk23'
+alias c23='cd /opt/fsa/cm/23'
 alias sandbox='cd /opt/fsa/trunk/web/sandbox'
 alias fsadb='cd /opt/fsa/drive0/private/db-install'
 alias guidb='sqlite3 /opt/fsa/drive0/private/db-install/FortiSandboxGUI.db'
@@ -87,3 +91,9 @@ alias ssh155="ssh admin@172.16.69.155"
 alias ssh215="ssh admin@172.16.69.215"
 alias ssh97="ssh admin@172.17.94.97"
 alias tel97="telnet 172.17.93.191 2043"
+
+# for android sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+export JAVA_HOME
+export PATH=$PATH:$ANDROID_HOME/tools

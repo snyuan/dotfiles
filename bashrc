@@ -93,10 +93,10 @@ alias cd...='cd ../..'
 alias cd....='cd ../../..'
 alias cd.....='cd ../../../..'
 alias cd......='cd ../../../../..'
-alias ssh32= ssh admin@172.16.69.32
-alias ssh34= ssh admin@172.16.69.34
-alias ssh90= ssh admin@172.16.92.90
-alias ssh96= ssh admin@172.16.69.96
+alias ssh32='ssh admin@172.16.69.32'
+alias ssh34='ssh admin@172.16.69.34'
+alias ssh90='ssh admin@172.16.92.90'
+alias ssh96='ssh admin@172.16.69.96'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -126,4 +126,10 @@ export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\t:\w\$ '
 mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/undo
+
+# for Android sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+export JAVA_HOME
 
