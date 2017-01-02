@@ -116,6 +116,8 @@ Bundle 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
 Bundle 'vim-scripts/dbext.vim'
 " Bundle 'python_fold_compact'
 Plugin 'vasconcelloslf/vim-interestingwords'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'Quramy/tsuquyomi'
 
 call vundle#end()                        " required
 filetype plugin indent on                " required
