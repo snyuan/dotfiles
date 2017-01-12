@@ -115,7 +115,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
 Bundle 'vim-scripts/dbext.vim'
 " Bundle 'python_fold_compact'
-Plugin 'vasconcelloslf/vim-interestingwords'
+" Plugin 'vasconcelloslf/vim-interestingwords'
 
 call vundle#end()                        " required
 filetype plugin indent on                " required

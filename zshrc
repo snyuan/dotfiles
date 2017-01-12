@@ -63,12 +63,13 @@ alias rp="rb_genco post"
 # Fortinet Shortcuts
 alias fsa='cd /opt/fsa'
 alias cdir='cd /opt/fsa && ./fdev.sh'
-alias tk='cd /opt/fsa/trunk'
-alias ctk='cd /opt/fsa/cm/tk'
+alias tk='cd /opt/fsa/tk'
+alias tk1='cd /opt/fsa/tk1'
+alias trunk='cd /opt/fsa/trunk'
 alias 22='cd /opt/fsa_old/trunk2.2'
-alias c22='cd /opt/fsa_old/cm/22'
-alias 23='cd /opt/fsa/tk23'
-alias c23='cd /opt/fsa/cm/23'
+alias 23='cd /opt/fsa/br23'
+alias 231='cd /opt/fsa/br231'
+alias 232='cd /opt/fsa/br232'
 alias sandbox='cd /opt/fsa/trunk/web/sandbox'
 alias fsadb='cd /opt/fsa/drive0/private/db-install'
 alias guidb='sqlite3 /opt/fsa/drive0/private/db-install/FortiSandboxGUI.db'
@@ -78,6 +79,7 @@ alias rmsto='/bin/rm -fr /opt/fsa_old/Storage/* /opt/fsa_old/drive0/private/db-i
 alias pvt='cd /opt/fsa/drive0/private'
 alias ssh32="ssh admin@172.16.69.32"
 alias ssh34="ssh admin@172.16.69.34"
+alias ssh35="ssh admin@172.16.69.35"
 alias ssh90="ssh admin@172.16.92.90"
 alias ssh89="ssh admin@172.16.92.89"
 alias ssh96="ssh admin@172.16.69.96"
@@ -88,12 +90,14 @@ alias ssh146="ssh admin@172.16.69.146"
 alias ssh147="ssh admin@172.16.69.147"
 alias ssh154="ssh admin@172.16.69.154"
 alias ssh155="ssh admin@172.16.69.155"
+alias ssh162="ssh admin@172.16.69.162"
 alias ssh215="ssh admin@172.16.69.215"
 alias ssh97="ssh admin@172.17.94.97"
 alias tel97="telnet 172.17.93.191 2043"
 
 # for android sdk
-export ANDROID_HOME=$HOME/Android/Sdk
 JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 export JAVA_HOME
-export PATH=$PATH:$ANDROID_HOME/tools
+# now I have removed Android Sdk, so comment below. Andy Yuan@Jan 4, 2017
+#export ANDROID_HOME=$HOME/Android/Sdk
+#export PATH=$PATH:$ANDROID_HOME/tools:/usr/bin
