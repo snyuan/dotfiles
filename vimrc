@@ -124,7 +124,7 @@ call vundle#end()                        " required
 filetype plugin indent on                " required
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-set clipboard+=unnamed
+set clipboard=unnamed
 " Accessing the system clipboard share clipboard with system
 set clipboard=unnamedplus
 set guifont=Monaco:h9
