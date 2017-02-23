@@ -408,6 +408,8 @@ nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 function! MySys()
   if has("win32")
     return "windows"
+  elseif has("mac")
+    return "mac"
   else
     return "linux"
   endif
@@ -462,4 +464,8 @@ endif
 if MySys() == 'windows'
     source $VIMRUNTIME/mswin.vim
     behave mswin
+endif
+" For Mac version
+if MySys() == 'mac'
+  set clipboard=unnamed
 endif
