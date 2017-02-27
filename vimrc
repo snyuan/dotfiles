@@ -124,7 +124,6 @@ call vundle#end()                        " required
 filetype plugin indent on                " required
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-set clipboard=unnamed
 " Accessing the system clipboard share clipboard with system
 set clipboard=unnamedplus
 set guifont=Monaco:h9
@@ -196,7 +195,6 @@ set exrc                            "enable per-directory .vimrc files
 set secure                          "disable unsafe commands in local .vimrc files
 set laststatus=2
 set encoding=utf-8
-set clipboard+=unnamedplus
 set wrap
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
