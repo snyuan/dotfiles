@@ -103,3 +103,6 @@ export JAVA_HOME
 # now I have removed Android Sdk, so comment below. Andy Yuan@Jan 4, 2017
 #export ANDROID_HOME=$HOME/Android/Sdk
 #export PATH=$PATH:$ANDROID_HOME/tools:/usr/bin
+#
+
+unsetopt share_history
