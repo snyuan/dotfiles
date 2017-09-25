@@ -133,3 +133,5 @@ export PATH=$PATH:$ANDROID_HOME/tools
 JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 export JAVA_HOME
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
