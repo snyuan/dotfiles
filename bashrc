@@ -127,11 +127,16 @@ mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/undo
 
-# for Android sdk
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+JAVA_HOME8="/opt/jdk1.8.0_144/"
+JAVA_HOME7="/opt/jdk1.7.0_79/"
+JAVA_HOME=$JAVA_HOME7
 export JAVA_HOME
+JAVA_HOME_BIN=$JAVA_HOME'/bin'
+export PATH=$PATH:$JAVA_HOME_BIN:/opt/apache-maven-3.5.0/bin
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# for Dart
+export PATH=/usr/lib/dart/bin:$PATH
+export PATH=/home/andy/bin:$PATH

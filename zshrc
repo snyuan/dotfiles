@@ -19,7 +19,8 @@ alias cd.....="cd ../../../../"
 alias rm="/bin/rm -f"
 alias cp="/bin/cp"
 alias mv="/bin/mv"
- 
+alias ssh="/usr/bin/ssh"
+
 # Customize to your needs...
 # Shell Commands
 alias l='ls -la'
@@ -43,7 +44,9 @@ alias dl="cd ~/Downloads"
 alias cow="chown andy -R ./web"
 alias cow22="chown andy -R /opt/fsa/trunk2.2/web"
 alias cowtk="chown andy -R /opt/fsa/trunk/web"
-alias sysup="sudo apt-get update && sudo apt-get upgrade"
+alias sysup="sudo apt-get update && sudo apt-get upgrade && sudo apt autoremove"
+alias tint2="/usr/bin/tint2 -c /home/andy/.config/tint2/tint2rc&"
+alias tint="/usr/bin/tint2 -c /home/andy/.config/tint2/tint2rc&"
 
 # SVN commands
 alias sd="svn diff"
@@ -81,80 +84,57 @@ alias trunkw='cd /opt/fsa/trunkw'
 alias sandbox='cd /opt/fsa/trunk/web/sandbox'
 alias fsadb='cd /opt/fsa/drive0/private/db-install'
 alias guidb='sqlite3 /opt/fsa/ramdisk/FortiSandboxGUI.db'
+alias webdb='sqlite3 /opt/fsa/etc/FortiSandboxGUIBackend.db'
+alias rptdb='sqlite3 /opt/fsa/drive0/private/db/reports.db'
 alias storage='cd /opt/fsa/Storage'
-alias rmst='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db /opt/fsa/drive0/private/statistics/* /opt/fsa/drive0/private/db-install/'
+alias rmst='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db  /opt/fsa/drive0/private/db/* /opt/fsa/drive0/private/statistics/*  /opt/fsa/drive0/private/bandwidth/*'
 alias pvt='cd /opt/fsa/drive0/private'
-# alias s39='ssh admin@172.18.39.$1'
-# alias s69='ssh admin@172.16.69.$1'
+
 s39(){
-  a='/usr/bin/ssh admin@172.18.39.'
-  b=$a$2
-  $b
+  # eval '/usr/bin/ssh admin@172.18.39.$1'
+  if [ -z "$2" ]
+  then
+     eval 'fsash.sh 172.18.39.$1'
+  else
+      eval 'fsash.sh 172.18.39.$1 $2'
+  fi    
 }
-alias ssh12="ssh admin@172.16.69.12"
-alias ssh13="ssh admin@172.16.69.13"
-alias ssh15="ssh admin@172.16.69.15"
-alias ssh17="ssh admin@172.16.69.17"
-alias ssh31="ssh admin@172.16.69.31"
-alias ssh12="ssh admin@172.16.69.12"
-alias ssh13="ssh admin@172.16.69.13"
-alias ssh15="ssh admin@172.16.69.15"
-alias ssh17="ssh admin@172.16.69.17"
-alias ssh31="ssh admin@172.16.69.31"
-alias ssh32="ssh admin@172.16.69.32"
-alias ssh33="ssh admin@172.16.69.33"
-alias ssh34="ssh admin@172.16.69.34"
-alias ssh35="ssh admin@172.16.69.35"
-alias ssh36="ssh admin@172.16.69.36"
-alias ssh37="ssh admin@172.16.69.37"
-alias ssh38="ssh admin@172.16.69.38"
-alias ssh39="ssh admin@172.16.69.39"
-alias ssh96="ssh admin@172.16.69.96"
-alias ssh113="ssh admin@172.16.69.113"
-alias ssh128="ssh admin@172.16.69.128"
-alias ssh140="ssh admin@172.16.69.140"
-alias ssh142="ssh admin@172.16.69.142"
-alias ssh143="ssh admin@172.16.69.143"
-alias ssh145="ssh admin@172.16.69.145"
-alias ssh146="ssh admin@172.16.69.146"
-alias ssh147="ssh admin@172.16.69.147"
-alias ssh148="ssh admin@172.16.69.148"
-alias ssh149="ssh admin@172.16.69.149"
-alias ssh153="ssh admin@172.16.69.153"
-alias ssh154="ssh admin@172.16.69.154"
-alias ssh155="ssh admin@172.16.69.155"
-alias ssh157="ssh admin@172.16.69.157"
-alias ssh158="ssh admin@172.16.69.158"
-alias ssh162="ssh admin@172.16.69.162"
-alias ssh196="ssh admin@172.16.69.196"
-alias ssh201="ssh admin@172.16.69.201"
-alias ssh202="ssh admin@172.16.69.202"
-alias ssh203="ssh admin@172.16.69.203"
-alias ssh204="ssh admin@172.16.69.204"
-alias ssh205="ssh admin@172.16.69.205"
-alias ssh206="ssh admin@172.16.69.206"
-alias ssh207="ssh admin@172.16.69.207"
-alias ssh208="ssh admin@172.16.69.208"
-alias ssh209="ssh admin@172.16.69.209"
-alias ssh210="ssh admin@172.16.69.210"
-alias ssh211="ssh admin@172.16.69.211"
-alias ssh212="ssh admin@172.16.69.212"
-alias ssh213="ssh admin@172.16.69.213"
-alias ssh215="ssh admin@172.16.69.215"
-alias ssh217="ssh admin@172.16.69.217"
-alias ssh97="ssh admin@172.17.94.97"
+s69(){
+  # eval '/usr/bin/s69 $1'
+  if [ -z "$2" ]
+  then
+     eval 'fsash.sh 172.16.69.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval 'fsash.sh 172.16.69.$1'
+  else
+      eval 'fsash.sh 172.16.69.$1 $2'
+  fi    
+}
+alias ssh97="fsash.sh 172.17.94.97"
 alias tel97="telnet 172.17.93.191 2043"
-alias ssh90="ssh admin@172.16.92.90"
+alias ssh90="fsash.sh 172.16.92.90 g00dPwd15"
 alias ssh89="ssh admin@172.16.92.89"
 
 # for android sdk
-JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+# JAVA_HOME="/usr/lib/jvm/java-8-oracle"
+
+JAVA_HOME8="/opt/jdk1.8.0_144/"
+JAVA_HOME7="/opt/jdk1.7.0_79/"
+JAVA_HOME=$JAVA_HOME7
 export JAVA_HOME
+JAVA_HOME_BIN=$JAVA_HOME'/bin'
+export PATH=$PATH:$JAVA_HOME_BIN:/opt/apache-maven-3.5.0/bin
+# To run eclipse with GTK2:https://www.eclipse.org/forums/index.php/t/1081230/
+export SWT_GTK3=0
+
 # now I have removed Android Sdk, so comment below. Andy Yuan@Jan 4, 2017
 # export ANDROID_HOME=$HOME/Android/Sdk
 # export PATH=$PATH:$ANDROID_HOME/tools:/usr/bin
 NODE_PATH="/usr/local/lib/node_modules"
 export NODE_PATH
+export PATH=/home/andy/bin:$PATH
 
 alias jhome="update-alternatives --config java"
 unsetopt share_history
