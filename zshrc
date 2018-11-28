@@ -41,12 +41,15 @@ alias ff="find . -name"
 alias kk="rm -rf /root/.ssh/known_hosts"
 alias sz="sudo zsh"
 alias dl="cd ~/Downloads"
+alias co="chown andy -R ."
 alias cow="chown andy -R ./web"
 alias cow22="chown andy -R /opt/fsa/trunk2.2/web"
 alias cowtk="chown andy -R /opt/fsa/trunk/web"
 alias sysup="sudo apt-get update && sudo apt-get upgrade && sudo apt autoremove"
 alias tint2="/usr/bin/tint2 -c /home/andy/.config/tint2/tint2rc&"
 alias tint="/usr/bin/tint2 -c /home/andy/.config/tint2/tint2rc&"
+alias sql="sqlite3"
+alias sqlite="sqlite3"
 
 # SVN commands
 alias sd="svn diff"
@@ -69,6 +72,7 @@ alias ru="~/bin/rb_genco.py update"
 # Fortinet Shortcuts
 alias fsa='cd /opt/fsa'
 alias cdir='cd /opt/fsa && ./fdev.sh'
+alias trap='cd /opt/fsa/trap'
 alias t='cd /opt/fsa/trunk'
 alias tw='cd /opt/fsa/trunk/web'
 alias t1='cd /opt/fsa/trunk1'
@@ -81,13 +85,16 @@ alias t4='cd /opt/fsa/trunk4'
 alias t4w='cd /opt/fsa/trunk4/web'
 alias trunk='cd /opt/fsa/trunk'
 alias trunkw='cd /opt/fsa/trunkw'
+alias br3='cd /opt/fsa/br3'
+alias br3w='cd /opt/fsa/br3/web'
 alias sandbox='cd /opt/fsa/trunk/web/sandbox'
 alias fsadb='cd /opt/fsa/drive0/private/db-install'
 alias guidb='sqlite3 /opt/fsa/ramdisk/FortiSandboxGUI.db'
 alias webdb='sqlite3 /opt/fsa/etc/FortiSandboxGUIBackend.db'
 alias rptdb='sqlite3 /opt/fsa/drive0/private/db/reports.db'
 alias storage='cd /opt/fsa/Storage'
-alias rmst='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db  /opt/fsa/drive0/private/db/* /opt/fsa/drive0/private/statistics/*  /opt/fsa/drive0/private/bandwidth/*'
+alias rmall='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db  /opt/fsa/drive0/private/statistics/*'
+alias rmst='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db'
 alias pvt='cd /opt/fsa/drive0/private'
 
 s39(){
@@ -97,7 +104,7 @@ s39(){
      eval 'fsash.sh 172.18.39.$1'
   else
       eval 'fsash.sh 172.18.39.$1 $2'
-  fi    
+  fi
 }
 s69(){
   # eval '/usr/bin/s69 $1'
@@ -110,7 +117,7 @@ s69(){
     eval 'fsash.sh 172.16.69.$1'
   else
       eval 'fsash.sh 172.16.69.$1 $2'
-  fi    
+  fi
 }
 alias ssh97="fsash.sh 172.17.94.97"
 alias tel97="telnet 172.17.93.191 2043"

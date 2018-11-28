@@ -119,6 +119,7 @@ Bundle 'vim-scripts/dbext.vim'
 Plugin 'vasconcelloslf/vim-interestingwords'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'Quramy/tsuquyomi'
+Plugin 'severin-lemaignan/vim-minimap'
 
 call vundle#end()                        " required
 filetype plugin indent on                " required
@@ -245,6 +246,15 @@ let g:airline_right_alt_sep = ''
 " let g:airline_linecolumn_prefix = ''
 " let g:airline_theme='jellybeans'
 let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.pyc$']
+
+" vim-minimap
+let g:minimap_show='<leader>ms'
+let g:minimap_update='<leader>mu'
+let g:minimap_close='<leader>gc'
+let g:minimap_toggle='<leader>gt'
+let g:minimap_highlight='Visual'
+autocmd vimenter * Minimap
 
 highlight clear SignColumn
 
@@ -257,6 +267,9 @@ autocmd BufNewFile,BufRead *.aspx set filetype=javascript
 autocmd BufNewFile,BufRead *.ascx set filetype=javascript
 autocmd BufNewFile,BufRead *.asmx set filetype=aspnet
 
+" Nerdtree auto close and open Nerdtree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
+" autocmd vimenter * NERDTree
 
 "This maps ctrl+h and ctrl+l to moving between :vsplit windows
 map <silent> <bs> <C-W>h
