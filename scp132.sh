@@ -16,7 +16,7 @@ expect {
 	}
 
 	"assword:" {
-		send -- "andyyuan\r"
+		send -- "nauy2019\r"
 		expect {
 			"denied" {
 				puts "Password incorrect."
