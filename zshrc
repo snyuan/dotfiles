@@ -92,7 +92,7 @@ alias webdb='sqlite3 /opt/fsa/etc/FortiSandboxGUIBackend.db'
 alias rptdb='sqlite3 /opt/fsa/drive0/private/db/reports.db'
 alias storage='cd /opt/fsa/Storage'
 alias rmall='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db  /opt/fsa/drive0/private/statistics/*'
-alias rmst='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db'
+alias rmst='sudo /bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db'
 alias pvt='cd /opt/fsa/drive0/private'
 
 alias fsan='cd /opt/fsa_hd'
@@ -107,6 +107,19 @@ s39(){
      eval '/home/andy/bin/fsash.sh 172.18.39.$1'
   else
       eval '/home/andy/bin/fsash.sh 172.18.39.$1 $2'
+  fi
+}
+s59(){
+  # eval '/usr/bin/ssh admin@10.59.2.$1'
+  if [ -z "$2" ]
+  then
+     eval '/home/andy/bin/fsash.sh 10.59.2.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval '/home/andy/bin/fsash.sh 10.59.2.$1'
+  else
+      eval '/home/andy/bin/fsash.sh 10.59.2.$1 $2'
   fi
 }
 s69(){
