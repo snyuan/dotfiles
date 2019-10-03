@@ -68,37 +68,37 @@ alias rp="~/bin/rb_genco.py post"
 alias ru="~/bin/rb_genco.py update"
 
 # Fortinet Shortcuts
-alias fsa='cd /opt/fsa'
-alias cdir='cd /opt/fsa && ./fdev.sh'
-alias trap='cd /opt/fsa/trap'
-alias t='cd /opt/fsa/trunk'
-alias tw='cd /opt/fsa/trunk/web'
-alias t1='cd /opt/fsa/trunk1'
-alias t1w='cd /opt/fsa/trunk1/web'
-alias t2='cd /opt/fsa/trunk2'
-alias t2w='cd /opt/fsa/trunk2/web'
-alias t3='cd /opt/fsa/trunk3'
-alias t3w='cd /opt/fsa/trunk3/web'
-alias t4='cd /opt/fsa/trunk4'
-alias t4w='cd /opt/fsa/trunk4/web'
-alias trunk='cd /opt/fsa/trunk'
-alias trunkw='cd /opt/fsa/trunkw'
-alias br3='cd /opt/fsa/br3'
-alias br3w='cd /opt/fsa/br3/web'
-alias sandbox='cd /opt/fsa/trunk/web/sandbox'
-alias fsadb='cd /opt/fsa/drive0/private/db-install'
-alias guidb='sqlite3 /opt/fsa/ramdisk/FortiSandboxGUI.db'
-alias webdb='sqlite3 /opt/fsa/etc/FortiSandboxGUIBackend.db'
-alias rptdb='sqlite3 /opt/fsa/drive0/private/db/reports.db'
-alias storage='cd /opt/fsa/Storage'
-alias rmall='/bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db  /opt/fsa/drive0/private/statistics/*'
-alias rmst='sudo /bin/rm -fr /opt/fsa/Storage/* /opt/fsa/ramdisk/*.db'
-alias pvt='cd /opt/fsa/drive0/private'
+alias fsa='cd ~/opt/fsa'
+alias cdir='cd ~/opt/fsa && ./fdev.sh'
+alias trap='cd ~/opt/fsa/trap'
+alias t='cd ~/opt/fsa/trunk'
+alias tw='cd ~/opt/fsa/trunk/web'
+alias t1='cd ~/opt/fsa/trunk1'
+alias t1w='cd ~/opt/fsa/trunk1/web'
+alias t2='cd ~/opt/fsa/trunk2'
+alias t2w='cd ~/opt/fsa/trunk2/web'
+alias t3='cd ~/opt/fsa/trunk3'
+alias t3w='cd ~/opt/fsa/trunk3/web'
+alias t4='cd ~/opt/fsa/trunk4'
+alias t4w='cd ~/opt/fsa/trunk4/web'
+alias trunk='cd ~/opt/fsa/trunk'
+alias trunkw='cd ~/opt/fsa/trunkw'
+alias br3='cd ~/opt/fsa/br3'
+alias br3w='cd ~/opt/fsa/br3/web'
+alias sandbox='cd ~/opt/fsa/trunk/web/sandbox'
+alias fsadb='cd ~/opt/fsa/drive0/private/db-install'
+alias guidb='sqlite3 ~/opt/fsa/ramdisk/FortiSandboxGUI.db'
+alias webdb='sqlite3 ~/opt/fsa/etc/FortiSandboxGUIBackend.db'
+alias rptdb='sqlite3 ~/opt/fsa/drive0/private/db/reports.db'
+alias storage='cd ~/opt/fsa/Storage'
+alias rmall='/bin/rm -fr ~/opt/fsa/Storage/* ~/opt/fsa/ramdisk/*.db  ~/opt/fsa/drive0/private/statistics/*'
+alias rmst='sudo /bin/rm -fr ~/opt/fsa/Storage/* ~/opt/fsa/ramdisk/*.db'
+alias pvt='cd ~/opt/fsa/drive0/private'
 
-alias fsan='cd /opt/fsa_hd'
-alias cdirn='cd /opt/fsa_hd && ./fdev.sh'
-alias tn='cd /opt/fsa_hd/trunk'
-alias twn='cd /opt/fsa_hd/trunk/web'
+alias fsan='cd ~/opt/fsa_hd'
+alias cdirn='cd ~/opt/fsa_hd && ./fdev.sh'
+alias tn='cd ~/opt/fsa_hd/trunk'
+alias twn='cd ~/opt/fsa_hd/trunk/web'
 
 s39(){
   # eval '/usr/bin/ssh admin@172.18.39.$1'
@@ -122,6 +122,18 @@ s59(){
       eval '/home/andy/bin/fsash.sh 10.59.2.$1 $2'
   fi
 }
+s594(){
+  if [ -z "$2" ]
+  then
+     eval '/home/andy/bin/fsash.sh 10.59.4.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval '/home/andy/bin/fsash.sh 10.59.4.$1'
+  else
+      eval '/home/andy/bin/fsash.sh 10.59.4.$1 $2'
+  fi
+}
 s69(){
   # eval '/usr/bin/s69 $1'
   if [ -z "$2" ]
@@ -138,18 +150,19 @@ s69(){
 alias ssh97="/home/andy/bin/fsash.sh 172.17.94.97"
 alias tel97="telnet 172.17.93.191 2043"
 alias ssh90="/home/andy/bin/fsash.sh 172.16.92.90 g00dPwd15"
+alias ssh38="/home/andy/bin/fsash.sh 172.16.92.38 g00dPwd19"
 alias ssh89="ssh admin@172.16.92.89"
 alias scp132="/home/andy/bin/scp132.sh"
 
 # for android sdk
 # JAVA_HOME="/usr/lib/jvm/java-8-oracle"
 
-JAVA_HOME8="/opt/jdk1.8.0_144/"
-JAVA_HOME7="/opt/jdk1.7.0_79/"
+JAVA_HOME8="~/opt/jdk1.8.0_144/"
+JAVA_HOME7="~/opt/jdk1.7.0_79/"
 JAVA_HOME=$JAVA_HOME7
 export JAVA_HOME
 JAVA_HOME_BIN=$JAVA_HOME'/bin'
-export PATH=$PATH:$JAVA_HOME_BIN:/opt/apache-maven-3.5.0/bin
+export PATH=$PATH:$JAVA_HOME_BIN:~/opt/apache-maven-3.5.0/bin
 # To run eclipse with GTK2:https://www.eclipse.org/forums/index.php/t/1081230/
 export SWT_GTK3=0
 
