@@ -120,6 +120,8 @@ Plugin 'vasconcelloslf/vim-interestingwords'
 Bundle 'leafgarland/typescript-vim'
 Bundle 'Quramy/tsuquyomi'
 Plugin 'severin-lemaignan/vim-minimap'
+" Plugin 'dense-analysis/ale'
+Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()                        " required
 filetype plugin indent on                " required
@@ -143,8 +145,9 @@ set number              " Show the line numbers on the left side.
 set formatoptions+=o    " Continue comment marker in new lines.
 set textwidth=0         " Hard-wrap long lines as you type them.
 set expandtab           " Insert spaces when TAB is pressed.
-set tabstop=2           " Render TABs using this many spaces.
-set shiftwidth=2        " Indentation amount for < and > commands.
+set tabstop=4           " Render TABs using this many spaces.
+set softtabstop=4
+set shiftwidth=4        " Indentation amount for < and > commands.
 
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
@@ -255,6 +258,9 @@ let g:minimap_close='<leader>gc'
 let g:minimap_toggle='<leader>gt'
 let g:minimap_highlight='Visual'
 
+" jedi-vim
+let g:jedi#use_tabs_not_buffers = 1
+
 highlight clear SignColumn
 
 autocmd BufNewFile,BufRead *.mobile.erb let b:eruby_subtype='html'
@@ -265,6 +271,7 @@ autocmd BufNewFile,BufRead Gemfile.lock set filetype=ruby
 autocmd BufNewFile,BufRead *.aspx set filetype=javascript
 autocmd BufNewFile,BufRead *.ascx set filetype=javascript
 autocmd BufNewFile,BufRead *.asmx set filetype=aspnet
+autocmd BufNewFile,BufRead *.py set foldmethod=indent
 
 " Nerdtree auto close and open Nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
