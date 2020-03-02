@@ -200,6 +200,8 @@ set secure                          "disable unsafe commands in local .vimrc fil
 set laststatus=2
 set encoding=utf-8
 set wrap
+set foldmethod=indent
+set foldlevelstart=20
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 set runtimepath^=~/.vim/bundle/ag.vim
@@ -260,6 +262,14 @@ let g:minimap_highlight='Visual'
 
 " jedi-vim
 let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#goto_command = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_stubs_command = "<leader>s"
+let g:jedi#goto_definitions_command = ""
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#rename_command = "<leader>r"
 
 highlight clear SignColumn
 
@@ -352,15 +362,15 @@ let g:syntastic_javascript_checkers = ['']
 " let g:syntastic_javascript_checkers = ['jshint']
 
 "Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 1
-" execute pathogen#infect()
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+execute pathogen#infect()
 
 "font size for macvim"
 if has("gui_running")
@@ -392,12 +402,12 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 
 " some key to delete not cut
-nnoremap <Leader>d "_d
-vnoremap <Leader>d "_d
+nnoremap <Leader>dd "_d
+vnoremap <Leader>dd "_d
 nnoremap <Leader>x "_x
 vnoremap <Leader>x "_x
-nnoremap <Leader>p "_p
-vnoremap <Leader>p "_p
+" nnoremap <Leader>p "_p
+" vnoremap <Leader>p "_p
 " replace the word under cursor with yanked content
 nnoremap <Leader>p viw"0p
 vnoremap <Leader>p viw"0p
