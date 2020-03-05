@@ -263,7 +263,7 @@ let g:minimap_highlight='Visual'
 " jedi-vim
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_assignments_command = "<leader>a"
 let g:jedi#goto_stubs_command = "<leader>s"
 let g:jedi#goto_definitions_command = ""
 let g:jedi#documentation_command = "K"
@@ -322,8 +322,11 @@ map <F3> :SVNBlame<CR>
 map <F4> :SVNLog<CR>
 map <F5> :SVNDiff<CR>
 
+" send current word to CtrlP
+map <F6> <C-P><C-\>w
+
 "Find javascript"
-map <F6> /Index: <CR> zz
+" map <F6> /Index: <CR> zz
 map <F7> :%y+ <CR>
 map <F8> :NERDTreeToggle<CR>
 set switchbuf=usetab
@@ -351,6 +354,34 @@ nmap <leader>fm :CtrlP app/models<cr>
 nmap <leader>ft :CtrlPTag<cr>
 nmap <leader>fv :CtrlP app/views<cr>
 
+" Insert a path of the file instead of opening it with CtrlP plugin
+function! CtrlPOpenFunc(action, line)
+   if a:action =~ '^h$'    
+      " Get the filename
+      let filename = fnameescape(fnamemodify(a:line, ':p'))
+
+      " Close CtrlP
+      call ctrlp#exit()
+      call ctrlp#mrufiles#add(filename)
+
+      " insert the contents of filename into the buffer
+      put =filename
+   else    
+      " Use CtrlP's default file opening function
+      call call('ctrlp#acceptfile', [a:action, a:line])
+
+   endif
+endfunction
+
+let g:ctrlp_open_func = { 
+         \ 'files': 'CtrlPOpenFunc',
+         \ 'mru files': 'CtrlPOpenFunc' 
+         \ }
+" in order to insert the file path by pressing Ctrl-x in the Ctrlp window.
+
+
+
+
 "tidy stuff from DK"
 nmap =t :%! tidy -config ~/.tidyrc<CR>
 
@@ -370,6 +401,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+let g:syntastic_python_pylint_post_args="--max-line-length=120"
 execute pathogen#infect()
 
 "font size for macvim"
