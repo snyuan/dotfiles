@@ -20,6 +20,10 @@ alias rm="/bin/rm -f"
 alias cp="/bin/cp"
 alias mv="/bin/mv"
 alias ssh="/usr/bin/ssh"
+alias sshstatus="systemctl status ssh"
+alias sshstop="systemctl stop ssh"
+alias sshstart="systemctl start ssh"
+alias sshrestart="systemctl restart ssh"
 
 # Customize to your needs...
 # Shell Commands
