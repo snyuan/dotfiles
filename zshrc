@@ -53,6 +53,10 @@ alias tint="/usr/bin/tint2 -c /home/andy/.config/tint2/tint2rc&"
 alias sql="sqlite3"
 alias sqlite="sqlite3"
 
+# FCT
+alias vpnsvn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt5'``
+alias emsd='/opt/forticlient/epctrl -d'
+
 # SVN commands
 alias sd="svn diff"
 alias sdf="svn diff --summarize"
@@ -93,6 +97,7 @@ alias br3='cd ~/opt/fsapy2/root/br3'
 alias br3w='cd ~/opt/fsapy2/root/br3/web'
 alias sandbox='cd ~/opt/fsa/root/trunk/web/sandbox'
 alias fsadb='cd ~/opt/fsa/drive0/private/db-install'
+alias ramdisk='cd ~/opt/fsa/ramdisk/'
 alias guidb='sqlite3 ~/opt/fsa/ramdisk/FortiSandboxGUI.db'
 alias webdb='sqlite3 ~/opt/fsa/etc/FortiSandboxGUIBackend.db'
 alias rptdb='sqlite3 ~/opt/fsa/drive0/private/db/reports.db'
@@ -151,6 +156,19 @@ s69(){
     eval '/home/andy/bin/fsash.sh 172.16.69.$1'
   else
       eval '/home/andy/bin/fsash.sh 172.16.69.$1 $2'
+  fi
+}
+s92(){
+  # eval '/usr/bin/s69 $1'
+  if [ -z "$2" ]
+  then
+     eval '/home/andy/bin/fsash.sh 172.16.92.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval '/home/andy/bin/fsash.sh 172.16.92.$1'
+  else
+      eval '/home/andy/bin/fsash.sh 172.16.92.$1 $2'
   fi
 }
 alias ssh97="/home/andy/bin/fsash.sh 172.17.94.97"

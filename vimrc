@@ -210,7 +210,10 @@ set backupdir=~/.vim/backup
 set dir=~/.vim/swap
 set undodir=~/.vim/undo
 set cursorcolumn
-set mouse=a
+set mouse=a " rmove '-' if want to disable mous select
+map <silent> z :set mouse=a<CR>
+map <silent> b :set mouse-=a<CR>
+
 
 set wildmode=longest,list
 set wildmenu
@@ -354,9 +357,11 @@ nmap <leader>fm :CtrlP app/models<cr>
 nmap <leader>ft :CtrlPTag<cr>
 nmap <leader>fv :CtrlP app/views<cr>
 
+nmap <leader>o :tabnew#<CR>
+
 " Insert a path of the file instead of opening it with CtrlP plugin
 function! CtrlPOpenFunc(action, line)
-   if a:action =~ '^h$'    
+   if a:action =~ '^h$'
       " Get the filename
       let filename = fnameescape(fnamemodify(a:line, ':p'))
 
@@ -366,16 +371,16 @@ function! CtrlPOpenFunc(action, line)
 
       " insert the contents of filename into the buffer
       put =filename
-   else    
+   else
       " Use CtrlP's default file opening function
       call call('ctrlp#acceptfile', [a:action, a:line])
 
    endif
 endfunction
 
-let g:ctrlp_open_func = { 
+let g:ctrlp_open_func = {
          \ 'files': 'CtrlPOpenFunc',
-         \ 'mru files': 'CtrlPOpenFunc' 
+         \ 'mru files': 'CtrlPOpenFunc'
          \ }
 " in order to insert the file path by pressing Ctrl-x in the Ctrlp window.
 
