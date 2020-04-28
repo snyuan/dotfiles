@@ -76,6 +76,7 @@ alias rp="~/bin/rb_genco.py post"
 alias ru="~/bin/rb_genco.py update"
 
 # Fortinet Shortcuts
+alias vnote='vi ~/Dropbox/Documents/FSA_note.txt'
 alias fsa='cd ~/opt/fsa'
 alias fsa2='cd ~/opt/fsapy2'
 alias cdir='cd ~/opt/fsa && ./fdev.sh'
