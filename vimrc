@@ -211,8 +211,8 @@ set dir=~/.vim/swap
 set undodir=~/.vim/undo
 set cursorcolumn
 set mouse=a " rmove '-' if want to disable mous select
-map <silent> z :set mouse=a<CR>
-map <silent> b :set mouse-=a<CR>
+map <silent> mz :set mouse=a<CR>
+map <silent> mb :set mouse-=a<CR>
 
 
 set wildmode=longest,list
