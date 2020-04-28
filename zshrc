@@ -41,11 +41,11 @@ alias ff="find . -name"
 alias kk="rm -rf /root/.ssh/known_hosts"
 alias sz="sudo zsh"
 alias dl="cd ~/Downloads"
-alias co="sudo chown andy -R ."
-alias cow="sudo chown andy -R ./web"
+alias co="sudo chown yeyuan -R ."
+alias cow="sudo chown yeyuan -R ./web"
 alias sysup="sudo apt-get update && sudo apt-get upgrade && sudo apt autoremove"
-alias tint2="/usr/bin/tint2 -c /home/andy/.config/tint2/tint2rc&"
-alias tint="/usr/bin/tint2 -c /home/andy/.config/tint2/tint2rc&"
+alias tint2="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
+alias tint="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
 alias sql="sqlite3"
 alias sqlite="sqlite3"
 
@@ -106,55 +106,55 @@ s39(){
   # eval '/usr/bin/ssh admin@172.18.39.$1'
   if [ -z "$2" ]
   then
-     eval '/home/andy/bin/fsash.sh 172.18.39.$1'
+     eval '~/bin/fsash.sh 172.18.39.$1'
   else
-      eval '/home/andy/bin/fsash.sh 172.18.39.$1 $2'
+      eval '~/bin/fsash.sh 172.18.39.$1 $2'
   fi
 }
 s59(){
   # eval '/usr/bin/ssh admin@10.59.2.$1'
   if [ -z "$2" ]
   then
-     eval '/home/andy/bin/fsash.sh 10.59.2.$1 123admin'
+     eval '~/bin/fsash.sh 10.59.2.$1 123admin'
   elif [ $2 -eq "0" ]
   then
     echo nopassword
-    eval '/home/andy/bin/fsash.sh 10.59.2.$1'
+    eval '~/bin/fsash.sh 10.59.2.$1'
   else
-      eval '/home/andy/bin/fsash.sh 10.59.2.$1 $2'
+      eval '~/bin/fsash.sh 10.59.2.$1 $2'
   fi
 }
 s594(){
   if [ -z "$2" ]
   then
-     eval '/home/andy/bin/fsash.sh 10.59.4.$1 123admin'
+     eval '~/bin/fsash.sh 10.59.4.$1 123admin'
   elif [ $2 -eq "0" ]
   then
     echo nopassword
-    eval '/home/andy/bin/fsash.sh 10.59.4.$1'
+    eval '~/bin/fsash.sh 10.59.4.$1'
   else
-      eval '/home/andy/bin/fsash.sh 10.59.4.$1 $2'
+      eval '~/bin/fsash.sh 10.59.4.$1 $2'
   fi
 }
 s69(){
   # eval '/usr/bin/s69 $1'
   if [ -z "$2" ]
   then
-     eval '/home/andy/bin/fsash.sh 172.16.69.$1 123admin'
+     eval '~/bin/fsash.sh 172.16.69.$1 123admin'
   elif [ $2 -eq "0" ]
   then
     echo nopassword
-    eval '/home/andy/bin/fsash.sh 172.16.69.$1'
+    eval '~/bin/fsash.sh 172.16.69.$1'
   else
-      eval '/home/andy/bin/fsash.sh 172.16.69.$1 $2'
+      eval '~/bin/fsash.sh 172.16.69.$1 $2'
   fi
 }
-alias ssh97="/home/andy/bin/fsash.sh 172.17.94.97"
+alias ssh97="~/bin/fsash.sh 172.17.94.97"
 alias tel97="telnet 172.17.93.191 2043"
-alias ssh90="/home/andy/bin/fsash.sh 172.16.92.90 g00dPwd15"
-alias ssh38="/home/andy/bin/fsash.sh 172.16.92.38 g00dPwd19"
+alias ssh90="~/bin/fsash.sh 172.16.92.90 g00dPwd15"
+alias ssh38="~/bin/fsash.sh 172.16.92.38 g00dPwd19"
 alias ssh89="ssh admin@172.16.92.89"
-alias scp132="/home/andy/bin/scp132.sh"
+alias scp132="~/bin/scp132.sh"
 
 # for android sdk
 # JAVA_HOME="/usr/lib/jvm/java-8-oracle"
@@ -168,12 +168,12 @@ export PATH=$PATH:$JAVA_HOME_BIN:~/opt/apache-maven-3.5.0/bin
 # To run eclipse with GTK2:https://www.eclipse.org/forums/index.php/t/1081230/
 export SWT_GTK3=0
 
-# now I have removed Android Sdk, so comment below. Andy Yuan@Jan 4, 2017
+# now I have removed Android Sdk, so comment below. yeyuan Yuan@Jan 4, 2017
 # export ANDROID_HOME=$HOME/Android/Sdk
 # export PATH=$PATH:$ANDROID_HOME/tools:/usr/bin
 NODE_PATH="/usr/local/lib/node_modules"
 export NODE_PATH
-export PATH=/home/andy/bin:$PATH
+export PATH=~/bin:$PATH
 
 alias jhome="update-alternatives --config java"
 unsetopt share_history
