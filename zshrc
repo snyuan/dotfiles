@@ -20,6 +20,10 @@ alias rm="/bin/rm -f"
 alias cp="/bin/cp"
 alias mv="/bin/mv"
 alias ssh="/usr/bin/ssh"
+alias sshstatus="systemctl status ssh"
+alias sshstop="systemctl stop ssh"
+alias sshstart="systemctl start ssh"
+alias sshrestart="systemctl restart ssh"
 
 # Customize to your needs...
 # Shell Commands
@@ -48,6 +52,10 @@ alias tint2="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
 alias tint="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
 alias sql="sqlite3"
 alias sqlite="sqlite3"
+
+# FCT
+alias vpnsvn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt5'``
+alias emsd='/opt/forticlient/epctrl -d'
 
 # SVN commands
 alias sd="svn diff"
@@ -89,6 +97,7 @@ alias br3='cd ~/opt/fsapy2/root/br3'
 alias br3w='cd ~/opt/fsapy2/root/br3/web'
 alias sandbox='cd ~/opt/fsa/root/trunk/web/sandbox'
 alias fsadb='cd ~/opt/fsa/drive0/private/db-install'
+alias ramdisk='cd ~/opt/fsa/ramdisk/'
 alias guidb='sqlite3 ~/opt/fsa/ramdisk/FortiSandboxGUI.db'
 alias webdb='sqlite3 ~/opt/fsa/etc/FortiSandboxGUIBackend.db'
 alias rptdb='sqlite3 ~/opt/fsa/drive0/private/db/reports.db'
@@ -150,7 +159,19 @@ s69(){
   fi
 }
 alias ssh97="~/bin/fsash.sh 172.17.94.97"
-alias tel97="telnet 172.17.93.191 2043"
+s92(){
+  # eval '/usr/bin/s69 $1'
+  if [ -z "$2" ]
+  then
+     eval '/home/andy/bin/fsash.sh 172.16.92.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval '/home/andy/bin/fsash.sh 172.16.92.$1'
+  else
+      eval '/home/andy/bin/fsash.sh 172.16.92.$1 $2'
+  fi
+}
 alias ssh90="~/bin/fsash.sh 172.16.92.90 g00dPwd15"
 alias ssh38="~/bin/fsash.sh 172.16.92.38 g00dPwd19"
 alias ssh89="ssh admin@172.16.92.89"
