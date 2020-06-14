@@ -24,106 +24,105 @@ endfunction
 set nocompatible                " be iMproved
 filetype off                    " required!
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-
-"my Bundle here:
+call plug#begin('~/.vim/plugged')
+"my Plug here:
 "
 " original repos on github
 "
-Bundle 'jiangmiao/auto-pairs'
-"Bundle 'klen/python-mode'
-"Bundle 'Valloric/ListToggle'
-Bundle 'SirVer/ultisnips'
-Bundle 't9md/vim-quickhl'
-" Bundle 'Lokaltog/vim-powerline'
+Plug 'jiangmiao/auto-pairs'
+"Plug 'klen/python-mode'
+"Plug 'Valloric/ListToggle'
+Plug 'SirVer/ultisnips'
+Plug 't9md/vim-quickhl'
+" Plug 'Lokaltog/vim-powerline'
 "..................................
 " vim-scripts repos
-Bundle 'YankRing.vim'
-Bundle 'vcscommand.vim'
-Bundle 'ShowPairs'
-Bundle 'SudoEdit.vim'
-Bundle 'EasyGrep'
-Bundle 'VOoM'
-Bundle 'VimIM'
-Bundle 'JavaScript-syntax'
-Bundle 'jQuery'
-Bundle 'othree/html5.vim'
-Bundle 'groenewege/vim-less'
-Bundle 'Markdown'
-Bundle 'Markdown-syntax'
-Bundle "snipmate-snippets"
-
-Bundle "ctrlp.vim"
+Plug 'vim-scripts/YankRing.vim'
+Plug 'vim-scripts/vcscommand.vim'
+Plug 'vim-scripts/ShowPairs'
+Plug 'vim-scripts/SudoEdit.vim'
+Plug 'vim-scripts/EasyGrep'
+Plug 'vim-scripts/VOoM'
+Plug 'vim-scripts/VimIM'
+Plug 'vim-scripts/JavaScript-syntax'
+Plug 'vim-scripts/jQuery'
+Plug 'othree/html5.vim'
+Plug 'groenewege/vim-less'
+Plug 'vim-scripts/Markdown'
+Plug 'vim-scripts/Markdown-syntax'
+Plug 'vim-scripts/snipmate-snippets'
+Plug 'vim-scripts/ctrlp.vim'
 "..................................
 " non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
+" Plug 'git://git.wincent.com/command-t.git'
 "......................................
-Bundle 'sjl/gundo.vim'
-Bundle 'ap/vim-css-color'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'bling/vim-airline'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'csexton/trailertrash.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'juvenn/mustache.vim'
-Bundle 'yaymukund/vim-rabl'
-Bundle 'int3/vim-extradite'
-Bundle 'sjl/splice.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-pathogen'
-Bundle 'tpope/vim-sleuth'
-Bundle 'bitc/vim-bad-whitespace'
-Bundle 'tomtom/tlib_vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-Bundle 'scrooloose/syntastic', { 'do': function('Installjshint') }
-Bundle 'mattn/emmet-vim'
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'pangloss/vim-javascript'
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'Raimondi/delimitMate'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'jshint/jshint'
-Bundle 'Shutnik/jshint2.vim'
-Bundle 'mattn/gist-vim'
-Bundle 'mattn/webapi-vim'
-Bundle 'elzr/vim-json'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'moll/vim-node'
-Bundle 'gioele/vim-autoswap'
-Bundle 'gavinbeatty/dragvisuals.vim'
-Bundle 'rking/ag.vim'
-Bundle 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-Bundle 'juneedahamed/svnj.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
-Bundle 'vim-scripts/dbext.vim'
-" Bundle 'python_fold_compact'
-" Plugin 'vasconcelloslf/vim-interestingwords'
-Plugin 'vasconcelloslf/vim-interestingwords'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'Quramy/tsuquyomi'
-Plugin 'severin-lemaignan/vim-minimap'
-" Plugin 'dense-analysis/ale'
-Plugin 'davidhalter/jedi-vim'
+Plug 'Yggdroot/LeaderF'
+Plug 'sjl/gundo.vim'
+Plug 'ap/vim-css-color'
+Plug 'nanotech/jellybeans.vim'
+Plug 'bling/vim-airline'
+Plug 'kchmck/vim-coffee-script'
+Plug 'csexton/trailertrash.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'juvenn/mustache.vim'
+Plug 'yaymukund/vim-rabl'
+Plug 'int3/vim-extradite'
+Plug 'sjl/splice.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-pathogen'
+Plug 'tpope/vim-sleuth'
+Plug 'bitc/vim-bad-whitespace'
+Plug 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
+Plug 'mattn/emmet-vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'Raimondi/delimitMate'
+Plug 'tomtom/tcomment_vim'
+Plug 'jshint/jshint'
+Plug 'Shutnik/jshint2.vim'
+Plug 'mattn/gist-vim'
+Plug 'mattn/webapi-vim'
+Plug 'elzr/vim-json'
+Plug 'digitaltoad/vim-jade'
+Plug 'moll/vim-node'
+Plug 'gioele/vim-autoswap'
+Plug 'gavinbeatty/dragvisuals.vim'
+Plug 'rking/ag.vim'
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'juneedahamed/svnj.vim'
+Plug 'majutsushi/tagbar'
+Plug 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
+Plug 'vim-scripts/dbext.vim'
+" Plug 'python_fold_compact'
+" Plug 'vasconcelloslf/vim-interestingwords'
+Plug 'vasconcelloslf/vim-interestingwords'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
+Plug 'severin-lemaignan/vim-minimap'
+" Plug 'dense-analysis/ale'
+Plug 'davidhalter/jedi-vim'
 
-call vundle#end()                        " required
+" Initialize plugin system
+call plug#end()
+
 filetype plugin indent on                " required
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
