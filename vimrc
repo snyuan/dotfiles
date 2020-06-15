@@ -62,7 +62,9 @@ Plug 'vim-scripts/ctrlp.vim'
 " non github repos
 " Plug 'git://git.wincent.com/command-t.git'
 "......................................
-Plug 'Yggdroot/LeaderF'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" fzf is another fuzzy search
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'sjl/gundo.vim'
 Plug 'ap/vim-css-color'
 Plug 'nanotech/jellybeans.vim'
@@ -106,6 +108,7 @@ Plug 'moll/vim-node'
 Plug 'gioele/vim-autoswap'
 Plug 'gavinbeatty/dragvisuals.vim'
 Plug 'rking/ag.vim'
+Plug 'mileszs/ack.vim'
 Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 Plug 'juneedahamed/svnj.vim'
 Plug 'majutsushi/tagbar'
@@ -116,16 +119,14 @@ Plug 'vim-scripts/dbext.vim'
 Plug 'vasconcelloslf/vim-interestingwords'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
-Plug 'severin-lemaignan/vim-minimap'
 " Plug 'dense-analysis/ale'
 Plug 'davidhalter/jedi-vim'
-
+Plug 'preservim/nerdcommenter'
 " Initialize plugin system
 call plug#end()
 
 filetype plugin indent on                " required
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
 " Accessing the system clipboard share clipboard with system
 set clipboard=unnamedplus
 set guifont=Monaco:h9
@@ -255,13 +256,6 @@ let g:airline_right_alt_sep = ''
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$']
 
-" vim-minimap
-let g:minimap_show='<leader>ms'
-let g:minimap_update='<leader>mu'
-let g:minimap_close='<leader>gc'
-let g:minimap_toggle='<leader>gt'
-let g:minimap_highlight='Visual'
-
 " jedi-vim
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_command = "<leader>d"
@@ -350,11 +344,87 @@ noremap   <Right>  <NOP>
 "ctrl p stuff from Jared"
 nmap <leader><leader> :CtrlP<cr>
 nmap <leader>b :CtrlPBuffer<cr>
-nmap <leader>fa :CtrlP app/assets<cr>
-nmap <leader>fc :CtrlP app/controllers<cr>
-nmap <leader>fm :CtrlP app/models<cr>
 nmap <leader>ft :CtrlPTag<cr>
-nmap <leader>fv :CtrlP app/views<cr>
+
+"LeaderF Leaderf leaderf leaderF
+" don't show the help in normal mode
+let g:Lf_HideHelp = 1
+let g:Lf_UseCache = 0
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_IgnoreCurrentBufferName = 1
+" popup mode
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
+let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+let g:Lf_ShortcutF = "<leader>ff"
+noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+" note need to install rg, on Mac: brew install rg
+noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+" search visually selected text literally
+xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+noremap go :<C-U>Leaderf! rg --recall<CR>
+
+" tags need global command, on Mac: brew install global           
+" should use `Leaderf gtags --update` first
+let g:Lf_GtagsAutoGenerate = 0
+let g:Lf_Gtagslabel = 'native-pygments'
+noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<C-T>': ['<CR>']}
+" end of LeaderF
+
+
+"  NERDComment
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+
+
+" ack.vim
+" 使用 leader + a search
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --nogroup --column'
+endif
+
+" 高亮搜索关键词
+let g:ackhighlight = 1
+" -------- end of ack.vim
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+" end of NERDComment
 
 nmap <leader>o :tabnew#<CR>
 
