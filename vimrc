@@ -122,6 +122,7 @@ Plug 'Quramy/tsuquyomi'
 " Plug 'dense-analysis/ale'
 Plug 'davidhalter/jedi-vim'
 Plug 'preservim/nerdcommenter'
+
 " Initialize plugin system
 call plug#end()
 
@@ -316,7 +317,9 @@ map <F1> :EraseBadWhitespace <CR>
 map <F2> :TagbarToggle<CR>
 map <F3> :SVNBlame<CR>
 map <F4> :SVNLog<CR>
-map <F5> :SVNDiff<CR>
+" map <F5> :SVNDiff<CR>
+" below list buffers and switch to input buffer
+nnoremap <F5> :buffers<CR>:buffer<Space>
 
 " send current word to CtrlP
 map <F6> <C-P><C-\>w
@@ -328,7 +331,7 @@ map <F8> :NERDTreeToggle<CR>
 set switchbuf=usetab
 map <F9> :sbnext<CR>
 map <S-F9> :sbprevious<CR>
-map <F11> :Ag <C-R><C-W> <C-R>=@% <CR><CR>
+map <F10> :Ag <C-R><C-W> <C-R>=@% <CR><CR>
 map <F12> :Ag <C-R><C-W><CR>
 
 "No arrow keys. :(
@@ -341,12 +344,44 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 
-"ctrl p stuff from Jared"
+"======================== ctrl p stuff from Jared ======================="
 nmap <leader><leader> :CtrlP<cr>
 nmap <leader>b :CtrlPBuffer<cr>
 nmap <leader>ft :CtrlPTag<cr>
 
-"LeaderF Leaderf leaderf leaderF
+" set open in new tab
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+    \ 'AcceptSelection("t")': ['<cr>'],
+    \ }
+
+" Insert a path of the file instead of opening it with CtrlP plugin
+function! CtrlPOpenFunc(action, line)
+   if a:action =~ '^h$'
+      " Get the filename
+      let filename = fnameescape(fnamemodify(a:line, ':p'))
+
+      " Close CtrlP
+      call ctrlp#exit()
+      call ctrlp#mrufiles#add(filename)
+
+      " insert the contents of filename into the buffer
+      put =filename
+   else
+      " Use CtrlP's default file opening function
+      call call('ctrlp#acceptfile', [a:action, a:line])
+
+   endif
+endfunction
+
+let g:ctrlp_open_func = {
+         \ 'files': 'CtrlPOpenFunc',
+         \ 'mru files': 'CtrlPOpenFunc'
+         \ }
+" in order to insert the file path by pressing Ctrl-x in the Ctrlp window.
+"====================== end of ctrl p stuff from Jared ====================="
+
+"=================== LeaderF Leaderf leaderf leaderF ======================="
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
@@ -382,27 +417,12 @@ noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<C-T>': ['<CR>']}
-" end of LeaderF
+"================ end of LeaderF Leaderf leaderf leaderF ===================="
 
 
-"  NERDComment
+"=============================== NERDComment ==================================
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-
-
-
-" ack.vim
-" 使用 leader + a search
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
-
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep --nogroup --column'
-endif
-
-" 高亮搜索关键词
-let g:ackhighlight = 1
-" -------- end of ack.vim
 
 " Use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
@@ -424,34 +444,23 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
-" end of NERDComment
+"=========================== end of NERDComment ================================
 
-nmap <leader>o :tabnew#<CR>
 
-" Insert a path of the file instead of opening it with CtrlP plugin
-function! CtrlPOpenFunc(action, line)
-   if a:action =~ '^h$'
-      " Get the filename
-      let filename = fnameescape(fnamemodify(a:line, ':p'))
 
-      " Close CtrlP
-      call ctrlp#exit()
-      call ctrlp#mrufiles#add(filename)
 
-      " insert the contents of filename into the buffer
-      put =filename
-   else
-      " Use CtrlP's default file opening function
-      call call('ctrlp#acceptfile', [a:action, a:line])
+" ============================  ack.vim ======================
+" 使用 leader + a search
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
 
-   endif
-endfunction
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep --nogroup --column'
+endif
 
-let g:ctrlp_open_func = {
-         \ 'files': 'CtrlPOpenFunc',
-         \ 'mru files': 'CtrlPOpenFunc'
-         \ }
-" in order to insert the file path by pressing Ctrl-x in the Ctrlp window.
+" 高亮搜索关键词
+let g:ackhighlight = 1
+" ====================== end of  ack.vim ======================
 
 
 
