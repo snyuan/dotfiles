@@ -45,8 +45,8 @@ alias ff="find . -name"
 alias kk="rm -rf /root/.ssh/known_hosts"
 alias sz="sudo zsh"
 alias dl="cd ~/Downloads"
-alias co="sudo chown yeyuan -R ."
-alias cow="sudo chown yeyuan -R ./web"
+alias co="sudo chown andy -R ."
+alias cow="sudo chown andy -R ./web"
 alias sysup="sudo apt-get update && sudo apt-get upgrade && sudo apt autoremove"
 alias tint2="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
 alias tint="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
@@ -54,7 +54,7 @@ alias sql="sqlite3"
 alias sqlite="sqlite3"
 
 # FCT
-alias vpnsvn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt5'``
+alias vpnsvn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt6'
 alias emsd='/opt/forticlient/epctrl -d'
 
 # SVN commands
@@ -77,6 +77,8 @@ alias ru="~/bin/rb_genco.py update"
 
 # Fortinet Shortcuts
 alias vnote='vi ~/Dropbox/Documents/FSA_note.txt'
+alias cnote='cat ~/Dropbox/Documents/FSA_note.txt'
+alias mnote='more ~/Dropbox/Documents/FSA_note.txt'
 alias fsa='cd ~/opt/fsa'
 alias fsa2='cd ~/opt/fsapy2'
 alias cdir='cd ~/opt/fsa && ./fdev.sh'
@@ -94,8 +96,14 @@ alias t4='cd ~/opt/fsa/root/trunk4'
 alias t4w='cd ~/opt/fsa/root/trunk4/web'
 alias trunk='cd ~/opt/fsa/root/trunk'
 alias trunkw='cd ~/opt/fsa/root/trunkw'
-alias br3='cd ~/opt/fsapy2/root/br3'
-alias br3w='cd ~/opt/fsapy2/root/br3/web'
+alias br3='cd ~/opt/fsa/root/br3'
+alias br3w='cd ~/opt/fsa/root/br3/web'
+alias br31='cd ~/opt/fsa/root/br3_1'
+alias br31w='cd ~/opt/fsa/root/br3_1/web'
+alias br32='cd ~/opt/fsa/root/br3_2'
+alias br32w='cd ~/opt/fsa/root/br3_2/web'
+alias br23='cd ~/opt/fsapy2/root/br3.1'
+alias br23w='cd ~/opt/fsapy2/root/br3.1/web'
 alias sandbox='cd ~/opt/fsa/root/trunk/web/sandbox'
 alias fsadb='cd ~/opt/fsa/drive0/private/db-install'
 alias ramdisk='cd ~/opt/fsa/ramdisk/'

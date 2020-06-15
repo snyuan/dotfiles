@@ -31,102 +31,105 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-"my Plug here:
-"
-" original repos on github
-"
-Plug 'jiangmiao/auto-pairs'
-"Plug 'klen/python-mode'
-"Plug 'Valloric/ListToggle'
-Plug 'SirVer/ultisnips'
-Plug 't9md/vim-quickhl'
-" Plug 'Lokaltog/vim-powerline'
-"..................................
-" vim-scripts repos
-Plug 'vim-scripts/YankRing.vim'
-Plug 'vim-scripts/vcscommand.vim'
-Plug 'vim-scripts/ShowPairs'
-Plug 'vim-scripts/SudoEdit.vim'
-Plug 'vim-scripts/EasyGrep'
-Plug 'vim-scripts/VOoM'
-Plug 'vim-scripts/VimIM'
-Plug 'vim-scripts/JavaScript-syntax'
-Plug 'vim-scripts/jQuery'
-Plug 'othree/html5.vim'
-Plug 'groenewege/vim-less'
-Plug 'vim-scripts/Markdown'
-Plug 'vim-scripts/Markdown-syntax'
-Plug 'vim-scripts/snipmate-snippets'
-Plug 'vim-scripts/ctrlp.vim'
-"..................................
-" non github repos
-" Plug 'git://git.wincent.com/command-t.git'
-"......................................
-Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-" fzf is another fuzzy search
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'sjl/gundo.vim'
-Plug 'ap/vim-css-color'
-Plug 'nanotech/jellybeans.vim'
-Plug 'bling/vim-airline'
-Plug 'kchmck/vim-coffee-script'
-Plug 'csexton/trailertrash.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'juvenn/mustache.vim'
-Plug 'yaymukund/vim-rabl'
-Plug 'int3/vim-extradite'
-Plug 'sjl/splice.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-pathogen'
-Plug 'tpope/vim-sleuth'
-Plug 'bitc/vim-bad-whitespace'
-Plug 'tomtom/tlib_vim'
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
-Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
-Plug 'mattn/emmet-vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'Raimondi/delimitMate'
-Plug 'tomtom/tcomment_vim'
-Plug 'jshint/jshint'
-Plug 'Shutnik/jshint2.vim'
-Plug 'mattn/gist-vim'
-Plug 'mattn/webapi-vim'
-Plug 'elzr/vim-json'
-Plug 'digitaltoad/vim-jade'
-Plug 'moll/vim-node'
-Plug 'gioele/vim-autoswap'
-Plug 'gavinbeatty/dragvisuals.vim'
-Plug 'rking/ag.vim'
-Plug 'mileszs/ack.vim'
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-Plug 'juneedahamed/svnj.vim'
-Plug 'majutsushi/tagbar'
-Plug 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
-Plug 'vim-scripts/dbext.vim'
-" Plug 'python_fold_compact'
-" Plug 'vasconcelloslf/vim-interestingwords'
-Plug 'vasconcelloslf/vim-interestingwords'
-Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
-" Plug 'dense-analysis/ale'
-Plug 'davidhalter/jedi-vim'
-Plug 'preservim/nerdcommenter'
+filetype plugin indent on                " required
+    "my Plug here:
+    "
+    " original repos on github
+    "
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+
+    Plug 'jiangmiao/auto-pairs'
+    "Plug 'klen/python-mode'
+    "Plug 'Valloric/ListToggle'
+    Plug 'SirVer/ultisnips'
+    Plug 't9md/vim-quickhl'
+    " Plug 'Lokaltog/vim-powerline'
+    "..................................
+    " vim-scripts repos
+    Plug 'vim-scripts/YankRing.vim'
+    Plug 'vim-scripts/vcscommand.vim'
+    Plug 'vim-scripts/ShowPairs'
+    Plug 'vim-scripts/SudoEdit.vim'
+    Plug 'vim-scripts/EasyGrep'
+    Plug 'vim-scripts/VOoM'
+    Plug 'vim-scripts/VimIM'
+    Plug 'vim-scripts/JavaScript-syntax'
+    Plug 'vim-scripts/jQuery'
+    Plug 'othree/html5.vim'
+    Plug 'groenewege/vim-less'
+    Plug 'vim-scripts/Markdown'
+    Plug 'vim-scripts/Markdown-syntax'
+    Plug 'vim-scripts/snipmate-snippets'
+    Plug 'vim-scripts/ctrlp.vim'
+    "..................................
+    " non github repos
+    " Plug 'git://git.wincent.com/command-t.git'
+    "......................................
+    Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+    " FZF is another fuzzy file search
+    " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'sjl/gundo.vim'
+    Plug 'ap/vim-css-color'
+    Plug 'nanotech/jellybeans.vim'
+    Plug 'bling/vim-airline'
+    Plug 'kchmck/vim-coffee-script'
+    Plug 'csexton/trailertrash.vim'
+    Plug 'scrooloose/nerdtree'
+    Plug 'juvenn/mustache.vim'
+    Plug 'yaymukund/vim-rabl'
+    Plug 'int3/vim-extradite'
+    Plug 'sjl/splice.vim'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-haml'
+    Plug 'tpope/vim-repeat'
+    Plug 'tpope/vim-endwise'
+    Plug 'tpope/vim-rails'
+    Plug 'tpope/vim-eunuch'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-markdown'
+    Plug 'tpope/vim-pathogen'
+    Plug 'tpope/vim-sleuth'
+    Plug 'bitc/vim-bad-whitespace'
+    Plug 'tomtom/tlib_vim'
+    Plug 'MarcWeber/vim-addon-mw-utils'
+    Plug 'garbas/vim-snipmate'
+    Plug 'honza/vim-snippets'
+    Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
+    Plug 'mattn/emmet-vim'
+    Plug 'jelera/vim-javascript-syntax'
+    Plug 'pangloss/vim-javascript'
+    Plug 'nathanaelkane/vim-indent-guides'
+    Plug 'Raimondi/delimitMate'
+    Plug 'tomtom/tcomment_vim'
+    Plug 'jshint/jshint'
+    Plug 'Shutnik/jshint2.vim'
+    Plug 'mattn/gist-vim'
+    Plug 'mattn/webapi-vim'
+    Plug 'elzr/vim-json'
+    Plug 'digitaltoad/vim-jade'
+    Plug 'moll/vim-node'
+    Plug 'gioele/vim-autoswap'
+    Plug 'gavinbeatty/dragvisuals.vim'
+    Plug 'rking/ag.vim'
+    Plug 'mileszs/ack.vim'
+    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+    Plug 'juneedahamed/svnj.vim'
+    Plug 'majutsushi/tagbar'
+    Plug 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
+    Plug 'vim-scripts/dbext.vim'
+    " Plug 'python_fold_compact'
+    " Plug 'vasconcelloslf/vim-interestingwords'
+    Plug 'vasconcelloslf/vim-interestingwords'
+    Plug 'leafgarland/typescript-vim'
+    Plug 'Quramy/tsuquyomi'
+    " Plug 'dense-analysis/ale'
+    Plug 'davidhalter/jedi-vim'
+    Plug 'preservim/nerdcommenter'
 
 " Initialize plugin system
 call plug#end()
 
-filetype plugin indent on                " required
 
 " Accessing the system clipboard share clipboard with system
 set clipboard=unnamedplus
@@ -329,8 +332,8 @@ map <F6> <C-P><C-\>w
 map <F7> :%y+ <CR>
 map <F8> :NERDTreeToggle<CR>
 set switchbuf=usetab
-map <F9> :sbnext<CR>
-map <S-F9> :sbprevious<CR>
+map <F9> :tabnext<CR>
+map <S-F9> :tabprevious<CR>
 map <F10> :Ag <C-R><C-W> <C-R>=@% <CR><CR>
 map <F12> :Ag <C-R><C-W><CR>
 
@@ -406,17 +409,34 @@ noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
 xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
 noremap go :<C-U>Leaderf! rg --recall<CR>
 
+let g:Lf_WildIgnore = {
+            \ 'dir': ['.svn','.git','.hg','.vscode','.wine','.deepinwine','.oh-my-zsh', '_pycache__'],
+            \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
+            \}
+
+" 按Esc键退出函数列表
+let g:Lf_NormalMap = {
+	\ "File":   [["<ESC>", ':exec g:Lf_py "fileExplManager.quit()"<CR>']],
+	\ "Buffer": [["<ESC>", ':exec g:Lf_py "bufExplManager.quit()"<CR>']],
+	\ "Mru":    [["<ESC>", ':exec g:Lf_py "mruExplManager.quit()"<CR>']],
+	\ "Tag":    [["<ESC>", ':exec g:Lf_py "tagExplManager.quit()"<CR>']],
+	\ "Function":    [["<ESC>", ':exec g:Lf_py "functionExplManager.quit()"<CR>']],
+	\ "Colorscheme":    [["<ESC>", ':exec g:Lf_py "colorschemeExplManager.quit()"<CR>']],
+	\ }
+
+
 " tags need global command, on Mac: brew install global           
 " should use `Leaderf gtags --update` first
-let g:Lf_GtagsAutoGenerate = 0
-let g:Lf_Gtagslabel = 'native-pygments'
-noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
-noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
-noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
-noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+" let g:Lf_GtagsAutoGenerate = 0
+" let g:Lf_Gtagslabel = 'native-pygments'
+" noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+" noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+" noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+" noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
 let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<C-T>': ['<CR>']}
+" let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 "================ end of LeaderF Leaderf leaderf leaderF ===================="
 
 
@@ -463,6 +483,19 @@ let g:ackhighlight = 1
 " ====================== end of  ack.vim ======================
 
 
+" airline-setting {{{
+"加强版状态栏
+let g:airline_theme='badwolf'
+"使用powerline打过补丁的字体
+let g:airline_powerline_fonts = 1
+"关闭状态显示空白符号计数,这个对我用处不大"
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#symbol = '!'
+"开启tabline
+let g:airline#extensions#tabline#enabled = 1
+"tabline中buffer显示编号
+let g:airline#extensions#tabline#buffer_nr_show = 1
+" }}}
 
 
 "tidy stuff from DK"
