@@ -250,8 +250,6 @@ let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|coverage\|vendor/bundle\|result\|build\|img\|pyc'
 
 let mapleader = ' '
-let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.pyc$']
 
 " jedi-vim
 let g:jedi#use_tabs_not_buffers = 1
@@ -261,7 +259,7 @@ let g:jedi#goto_stubs_command = "<leader>s"
 let g:jedi#goto_definitions_command = "<leader>k"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<leader>c"
+let g:jedi#completions_command = "<leader>m"
 let g:jedi#rename_command = "<leader>r"
 
 highlight clear SignColumn
@@ -277,6 +275,8 @@ autocmd BufNewFile,BufRead *.asmx set filetype=aspnet
 autocmd BufNewFile,BufRead *.py set foldmethod=indent
 
 " NERDTree {{{
+let NERDTreeShowHidden=1
+let NERDTreeIgnore = ['\.pyc$']
 " Nerdtree auto close and open Nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 " autocmd vimenter * NERDTree
