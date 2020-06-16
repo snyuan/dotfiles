@@ -1,5 +1,5 @@
 
-let g:python_host_prog='/usr/bin/python'
+let g:python_host_prog='/usr/local/bin/python'
 
 
 function! BuildYCM(info)
@@ -44,7 +44,6 @@ filetype plugin indent on                " required
     "Plug 'Valloric/ListToggle'
     Plug 'SirVer/ultisnips'
     Plug 't9md/vim-quickhl'
-    " Plug 'Lokaltog/vim-powerline'
     "..................................
     " vim-scripts repos
     Plug 'vim-scripts/YankRing.vim'
@@ -72,7 +71,6 @@ filetype plugin indent on                " required
     Plug 'sjl/gundo.vim'
     Plug 'ap/vim-css-color'
     Plug 'nanotech/jellybeans.vim'
-    Plug 'bling/vim-airline'
     Plug 'kchmck/vim-coffee-script'
     Plug 'csexton/trailertrash.vim'
     Plug 'scrooloose/nerdtree'
@@ -214,7 +212,7 @@ set backupdir=~/.vim/backup
 set dir=~/.vim/swap
 set undodir=~/.vim/undo
 set cursorcolumn
-set mouse=a " rmove '-' if want to disable mous select
+set mouse=a " remove '-' before '=' if want to disable mouse select
 map <silent> fd :set mouse=a<CR>
 map <silent> ff :set mouse-=a<CR>
 
@@ -236,9 +234,9 @@ colorscheme desert256
 " override view python doc key shortcut to ctrl-shift-d
 "let g:pymode_doc_bind = "<c-s-d>"
 "let g:pymode_lint_config = '$HOME/.pylint.rc'
-"let g:pymode_options_max_line_length = 100
-autocmd FileType python set colorcolumn=100
-highlight OverLength ctermbg=red ctermbg=white guibg=#592929
+"let g:pymode_options_max_line_length = 120
+autocmd FileType python set colorcolumn=120
+highlight OverLength ctermbg=yellow ctermbg=white guibg=#59F929
 match OverLength /\%121v.\+/
 
 "from Jared"
@@ -249,26 +247,18 @@ let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|coverage\|vendor/bundle\|result\|build\|img\|pyc'
 
 let mapleader = ' '
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-" let g:airline_fugitive_prefix = ' '
-" let g:airline_readonly_symbol = ''
-" let g:airline_linecolumn_prefix = ''
-" let g:airline_theme='jellybeans'
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$']
 
 " jedi-vim
 let g:jedi#use_tabs_not_buffers = 1
 let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>a"
+let g:jedi#goto_assignments_command = "<leader>l"
 let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = ""
+let g:jedi#goto_definitions_command = "<leader>k"
 let g:jedi#documentation_command = "K"
 let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<C-Space>"
+let g:jedi#completions_command = "<leader>c"
 let g:jedi#rename_command = "<leader>r"
 
 highlight clear SignColumn
@@ -283,9 +273,25 @@ autocmd BufNewFile,BufRead *.ascx set filetype=javascript
 autocmd BufNewFile,BufRead *.asmx set filetype=aspnet
 autocmd BufNewFile,BufRead *.py set foldmethod=indent
 
+" NERDTree {{{
 " Nerdtree auto close and open Nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
 " autocmd vimenter * NERDTree
+" NERDTree git symbols
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ 'Ignored'   : '☒',
+    \ "Unknown"   : "?"
+    \ }
+" }}}
+
 
 "This maps ctrl+h and ctrl+l to moving between :vsplit windows
 map <silent> <bs> <C-W>h
@@ -299,7 +305,7 @@ map <silent> <C-M> <C-W>_
 map <silent> <C-=> <C-W>=
 map <silent> <+> <C-W><S-=>
 map <silent> <C-N> :silent noh<CR>
-map <silent> <C-T> :NERDTree <CR>
+" map <silent> <C-T> :NERDTree <CR>
 map <silent> gb :Gblame<CR>
 map <silent> gc :Gcommit<CR>
 map <silent> gC :Gcommit -a<CR>
@@ -484,17 +490,55 @@ let g:ackhighlight = 1
 
 
 " airline-setting {{{
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
 "加强版状态栏
-let g:airline_theme='badwolf'
-"使用powerline打过补丁的字体
+" let g:airline_theme='badwolf'
+let g:airline_theme='moloai'
+"使用powerline打过补丁的字体 on my ubuntu: Powerline fonts installed to /home/andy/.local/share/fonts
 let g:airline_powerline_fonts = 1
-"关闭状态显示空白符号计数,这个对我用处不大"
+"关闭状态显示空白符号计数,这个对我用处不大
 let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
+" 开启tagbar
+let g:airline#extensions#tagbar#enabled = 1
 "开启tabline
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled=1 "顶部tab显示
 "tabline中buffer显示编号
 let g:airline#extensions#tabline#buffer_nr_show = 1
+nmap <tab> :bn<cr> " "设置tab键映射
+"
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+
+
+" unicode symbols
+let g:airline_left_sep = '»'
+let g:airline_left_alt_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_alt_sep = '◀'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.maxlinenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = '∄'
+let g:airline_symbols.whitespace = 'Ξ'
+
 " }}}
 
 
