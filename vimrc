@@ -36,8 +36,11 @@ filetype plugin indent on                " required
     "
     " original repos on github
     "
+    Plug 'mhinz/vim-startify'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
+    "中文帮助文档
+    Plug 'yianwillis/vimcdoc'
 
     Plug 'jiangmiao/auto-pairs'
     "Plug 'klen/python-mode'
@@ -495,8 +498,7 @@ if !exists('g:airline_symbols')
 endif
 
 "加强版状态栏
-" let g:airline_theme='badwolf'
-let g:airline_theme='moloai'
+let g:airline_theme='badwolf'
 "使用powerline打过补丁的字体 on my ubuntu: Powerline fonts installed to /home/andy/.local/share/fonts
 let g:airline_powerline_fonts = 1
 "关闭状态显示空白符号计数,这个对我用处不大
