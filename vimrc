@@ -71,6 +71,7 @@ filetype plugin indent on                " required
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     " FZF is another fuzzy file search
     " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'crusoexia/vim-monokai'
     Plug 'sjl/gundo.vim'
     Plug 'ap/vim-css-color'
     Plug 'nanotech/jellybeans.vim'
@@ -173,6 +174,7 @@ endif
 set display+=lastline
 set nostartofline       " Do not jump to first character with page commands.
 
+set cursorline
 set hlsearch            " Highlight search results.
 set ignorecase          " Make searching case insensitive
 set smartcase           " ... unless the query has capital letters.
@@ -196,6 +198,11 @@ set ts=2                            "tab stop 2
 set autoindent
 set smartindent                     "use smart indenting
 set bs=2                            "allow backspace in insert mode
+set whichwrap=b,s,<,>,[,]
+set nobomb
+set backspace=indent,eol,start whichwrap+=<,>,[,]
+" Vim 的默认寄存器和系统剪贴板共享
+set clipboard+=unnamed
 syntax enable                       "enable syntax highlighting
 syntax on                           "enable syntax highlighting
 set wmh=0                           "set min window height
@@ -223,9 +230,11 @@ map <silent> ff :set mouse-=a<CR>
 set wildmode=longest,list
 set wildmenu
 
-" colorscheme synic
 colorscheme desert256
-"colorscheme wombat
+colorscheme wombat
+colorscheme synic
+colorscheme monokai
+set background=dark    " Setting dark mode
 
 " python-mode setting
 " override go-to.definition key shortcut to ctrl-]
@@ -242,17 +251,10 @@ autocmd FileType python set colorcolumn=120
 highlight OverLength ctermbg=yellow ctermbg=white guibg=#59F929
 match OverLength /\%121v.\+/
 
-"from Jared"
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = '' " Stop messing with the path
-let g:ctrlp_match_window_bottom = 1
-let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|coverage\|vendor/bundle\|result\|build\|img\|pyc'
-
 let mapleader = ' '
 
 " jedi-vim
-let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>l"
 let g:jedi#goto_stubs_command = "<leader>s"
@@ -329,9 +331,7 @@ map <F1> :EraseBadWhitespace <CR>
 map <F2> :TagbarToggle<CR>
 map <F3> :SVNBlame<CR>
 map <F4> :SVNLog<CR>
-" map <F5> :SVNDiff<CR>
-" below list buffers and switch to input buffer
-nnoremap <F5> :buffers<CR>:buffer<Space>
+map <F5> :SVNDiff<CR>
 
 " send current word to CtrlP
 map <F6> <C-P><C-\>w
@@ -340,9 +340,8 @@ map <F6> <C-P><C-\>w
 " map <F6> /Index: <CR> zz
 map <F7> :%y+ <CR>
 map <F8> :NERDTreeToggle<CR>
-set switchbuf=usetab
-map <F9> :tabnext<CR>
-map <S-F9> :tabprevious<CR>
+" below list buffers and switch to input buffer
+nnoremap <F9> :buffers<CR>:buffer<Space>
 map <F10> :Ag <C-R><C-W> <C-R>=@% <CR><CR>
 map <F12> :Ag <C-R><C-W><CR>
 
@@ -355,8 +354,20 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+" buffers
+set switchbuf=usetab
+noremap <S-tab> :bp<CR>
+noremap bn :bn<CR>
+noremap bp :bp<CR>
+noremap bd :bd<CR>
 
 "======================== ctrl p stuff from Jared ======================="
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = '' " Stop messing with the path
+let g:ctrlp_match_window_bottom = 1
+let g:ctrlp_jump_to_buffer = 1 " Jump to tab AND buffer if already open
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|coverage\|vendor/bundle\|result\|build\|img\|pyc'
+
 nmap <leader><leader> :CtrlP<cr>
 nmap <leader>b :CtrlPBuffer<cr>
 nmap <leader>ft :CtrlPTag<cr>
@@ -444,8 +455,8 @@ let g:Lf_NormalMap = {
 " noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
 " noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 
-let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<C-T>': ['<CR>']}
-" let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+" let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>'], '<C-T>': ['<CR>']}
+let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
 "================ end of LeaderF Leaderf leaderf leaderF ===================="
 
 
