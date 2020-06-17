@@ -254,7 +254,7 @@ match OverLength /\%121v.\+/
 let mapleader = ' '
 
 " jedi-vim
-let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_tabs_not_buffers = 0 " 0: jump to buffer, 1 : jump to tab
 let g:jedi#goto_command = "<leader>d"
 let g:jedi#goto_assignments_command = "<leader>l"
 let g:jedi#goto_stubs_command = "<leader>s"
