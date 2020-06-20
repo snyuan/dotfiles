@@ -235,6 +235,8 @@ colorscheme wombat
 colorscheme synic
 colorscheme monokai
 set background=dark    " Setting dark mode
+autocmd ColorScheme janah highlight Normal ctermbg=235
+colorscheme janah
 
 " python-mode setting
 " override go-to.definition key shortcut to ctrl-]
@@ -334,7 +336,9 @@ map <F4> :SVNLog<CR>
 map <F5> :SVNDiff<CR>
 
 " send current word to CtrlP
-map <F6> <C-P><C-\>w
+" map <F6> <C-P><C-\>w
+" search file of current workd under cursor 
+noremap <F6> :Leaderf! file  --cword<CR>
 
 "Find javascript"
 " map <F6> /Index: <CR> zz
@@ -416,7 +420,7 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
 let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
-let g:Lf_ShortcutF = "<leader>ff"
+let g:Lf_ShortcutF = "<leader>f"
 noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
 noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
 noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
@@ -555,6 +559,51 @@ let g:airline_symbols.whitespace = 'Ξ'
 " }}}
 
 
+" vim-startify {{{
+nnoremap <leader>ls :SSave<CR>
+nnoremap <leader>lc :SClose<CR>
+nnoremap <leader>ll :SLoad<CR>
+nnoremap <leader>ld :SDelete<CR>
+
+" 'Most Recent Files' number
+let g:startify_files_number           = 18
+
+" Update session automatically as you exit vim
+let g:startify_session_persistence    = 1
+
+" Simplify the startify list to just recent files and sessions
+let g:startify_lists = [
+  \ { 'type': 'dir',       'header': ['   Recent files'] },
+  \ { 'type': 'sessions',  'header': ['   Saved sessions'] },
+  \ ]
+
+let s:header = [
+      \ '   __         _    _        _    _      _         _',
+      \ '  / /    ___ | |_ ( ) ___  | |_ | |__  (_) _ __  | | __',
+      \ ' / /    / _ \| __||/ / __| | __|| |_ \ | || |_ \ | |/ /',
+      \ '/ /___ |  __/| |_    \__ \ | |_ | | | || || | | ||   <',
+      \ '\____/  \___| \__|   |___/  \__||_| |_||_||_| |_||_|\_\',
+      \ ]
+
+let s:footer = [
+      \ '+-------------------------------------------+',
+      \ '|            ThinkVim ^_^                   |',
+      \ '|    Talk is cheap Show me the code         |',
+      \ '|                                           |',
+      \ '+-------------------------------------------+',
+      \ ]
+
+function! s:center(lines) abort
+  let longest_line   = max(map(copy(a:lines), 'strwidth(v:val)'))
+  let centered_lines = map(copy(a:lines),
+        \ 'repeat(" ", (&columns / 2) - (longest_line / 2)) . v:val')
+  return centered_lines
+endfunction
+
+let g:startify_custom_header = s:center(s:header)
+let g:startify_custom_footer = s:center(s:footer)
+" }}}
+
 "tidy stuff from DK"
 nmap =t :%! tidy -config ~/.tidyrc<CR>
 
@@ -603,6 +652,7 @@ let g:gist_post_private = 1
 nnoremap <Leader>e :e<CR>
 nnoremap <Leader>w :wa<CR>
 nnoremap <Leader>wa :wa<CR>
+nnoremap <Leader>qa :qa<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 
