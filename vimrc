@@ -536,6 +536,8 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+" show full file path
+let  g:airline_section_c='%F'
 
 " unicode symbols
 let g:airline_left_sep = '»'
@@ -560,6 +562,8 @@ let g:airline_symbols.whitespace = 'Ξ'
 
 
 " vim-startify {{{
+noremap <leader>ss :Startify<CR>
+" session
 nnoremap <leader>ls :SSave<CR>
 nnoremap <leader>lc :SClose<CR>
 nnoremap <leader>ll :SLoad<CR>
@@ -726,18 +730,18 @@ endfunction
 "Fast edit vimrc
 if MySys() == 'linux'
     "Fast reloading of the .vimrc
-    map <silent> <leader>ss :source ~/.vimrc<cr>
+    map <silent> <leader>sv :source ~/.vimrc<cr>
     "Fast editing of .vimrc
-    map <silent> <leader>ee :call SwitchToBuf("~/.vimrc")<cr>
+    map <silent> <leader>ev :call SwitchToBuf("~/.vimrc")<cr>
     "When .vimrc is edited, reload it
     autocmd! bufwritepost .vimrc source ~/.vimrc
 elseif MySys() == 'windows'
     " Set helplang
     set helplang=cn
     "Fast reloading of the _vimrc
-    map <silent> <leader>ss :source ~/_vimrc<cr>
+    map <silent> <leader>sv :source ~/_vimrc<cr>
     "Fast editing of _vimrc
-    map <silent> <leader>ee :call SwitchToBuf("~/_vimrc")<cr>
+    map <silent> <leader>ev :call SwitchToBuf("~/_vimrc")<cr>
     "When _vimrc is edited, reload it
     autocmd! bufwritepost _vimrc source ~/_vimrc
 endif
