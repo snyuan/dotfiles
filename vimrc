@@ -299,7 +299,8 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 " }}}
 
-
+" window
+noremap wc <C-W>c " close current window split
 "This maps ctrl+h and ctrl+l to moving between :vsplit windows
 map <silent> <bs> <C-W>h
 map <silent> <C-J> <C-W>j
@@ -409,6 +410,7 @@ let g:ctrlp_open_func = {
 "====================== end of ctrl p stuff from Jared ====================="
 
 "=================== LeaderF Leaderf leaderf leaderF ======================="
+cnoremap lf LeaderfFile
 " don't show the help in normal mode
 let g:Lf_HideHelp = 1
 let g:Lf_UseCache = 0
@@ -521,11 +523,39 @@ let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
 " 开启tagbar
 let g:airline#extensions#tagbar#enabled = 1
-"开启tabline
+
+
 let g:airline#extensions#tabline#enabled=1 "顶部tab显示
-"tabline中buffer显示编号
-let g:airline#extensions#tabline#buffer_nr_show = 1
-nmap <tab> :bn<cr> " "设置tab键映射
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#buffer_nr_show = 1 "开启tabline
+let g:airline#extensions#tabline#fnametruncate = 16
+let g:airline#extensions#tabline#fnamecollapse = 2
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#fnamemod = ':t'       " disable file paths in the tab
+let g:airline#extensions#tabline#show_close_button = 0 " remove 'X' at the end of the tabline
+let g:airline#extensions#tabline#show_tab_count = 1    " dont show tab numbers on the right
+let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
+let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
+let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9]
+" below is another method for above mapping, but is not as good as above
+" nmap <leader>1 :bfirst<CR>
+" nmap <leader>2 :bfirst<CR>:bn<CR>
+" nmap <leader>3 :bfirst<CR>:2bn<CR>
+" nmap <leader>4 :bfirst<CR>:3bn<CR>
+
+nmap <tab> :bn<cr> " "设置tab键映射下一个buffer
 "
 " powerline symbols
 let g:airline_left_sep = ''
@@ -536,8 +566,9 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-" show full file path
-let  g:airline_section_c='%F'
+let g:airline_section_b = '%{getcwd()}' " in section B of the status line display the CWD
+" show full file path in status bar
+" let  g:airline_section_c='%F'
 
 " unicode symbols
 let g:airline_left_sep = '»'
@@ -574,6 +605,9 @@ let g:startify_files_number           = 18
 
 " Update session automatically as you exit vim
 let g:startify_session_persistence    = 1
+
+" When opening a file or bookmark, don't change to its directory.
+let g:startify_change_to_dir = 0
 
 " Simplify the startify list to just recent files and sessions
 let g:startify_lists = [
