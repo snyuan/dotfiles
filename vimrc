@@ -1,5 +1,11 @@
+set nocompatible                " be iMproved " This must be first, because it changes other options as a side effect.
+scriptencoding utf-8
+
+" A bit faster than $SHELL (zsh).
+set shell=/bin/sh
 
 let g:python_host_prog='/usr/local/bin/python'
+let g:python3_host_prog='/usr/bin/python3'
 
 
 function! BuildYCM(info)
@@ -21,7 +27,6 @@ function! Installjshint(info)
 endfunction
 
 
-set nocompatible                " be iMproved
 filetype off                    " required!
 
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -43,7 +48,6 @@ filetype plugin indent on                " required
     Plug 'yianwillis/vimcdoc'
 
     Plug 'jiangmiao/auto-pairs'
-    "Plug 'klen/python-mode'
     "Plug 'Valloric/ListToggle'
     Plug 'SirVer/ultisnips'
     Plug 't9md/vim-quickhl'
@@ -78,6 +82,7 @@ filetype plugin indent on                " required
     Plug 'kchmck/vim-coffee-script'
     Plug 'csexton/trailertrash.vim'
     Plug 'scrooloose/nerdtree'
+    Plug 'preservim/nerdcommenter'
     Plug 'juvenn/mustache.vim'
     Plug 'yaymukund/vim-rabl'
     Plug 'int3/vim-extradite'
@@ -97,7 +102,6 @@ filetype plugin indent on                " required
     Plug 'MarcWeber/vim-addon-mw-utils'
     Plug 'garbas/vim-snipmate'
     Plug 'honza/vim-snippets'
-    Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
     Plug 'mattn/emmet-vim'
     Plug 'jelera/vim-javascript-syntax'
     Plug 'pangloss/vim-javascript'
@@ -115,19 +119,19 @@ filetype plugin indent on                " required
     Plug 'gavinbeatty/dragvisuals.vim'
     Plug 'rking/ag.vim'
     Plug 'mileszs/ack.vim'
-    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
     Plug 'juneedahamed/svnj.vim'
     Plug 'majutsushi/tagbar'
-    Plug 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
-    Plug 'vim-scripts/dbext.vim'
+    " Plug 'vim-scripts/dbext.vim'
     " Plug 'python_fold_compact'
     " Plug 'vasconcelloslf/vim-interestingwords'
     Plug 'vasconcelloslf/vim-interestingwords'
     Plug 'leafgarland/typescript-vim'
     Plug 'Quramy/tsuquyomi'
     " Plug 'dense-analysis/ale'
+    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+    Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
+    Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
     Plug 'davidhalter/jedi-vim'
-    Plug 'preservim/nerdcommenter'
 
 " Initialize plugin system
 call plug#end()
@@ -238,33 +242,155 @@ set background=dark    " Setting dark mode
 autocmd ColorScheme janah highlight Normal ctermbg=235
 colorscheme janah
 
-" python-mode setting
-" override go-to.definition key shortcut to ctrl-]
-"let g:pymode_rope_goto_definition_bind = "<c-]>"
+" pymode python-mode setting {{{
+    " override go-to.definition key shortcut to ctrl-]
+    let g:pymode_rope_goto_definition_bind = "<c-]>"
 
-" override run current python file key shortcut to ctrl-shift-e
-"let g:pymode_run_bind = "<c-s-e>"
+    " override run current python file key shortcut to ctrl-shift-e
+    let g:pymode_run_bind = "<c-s-e>"
 
-" override view python doc key shortcut to ctrl-shift-d
-"let g:pymode_doc_bind = "<c-s-d>"
-"let g:pymode_lint_config = '$HOME/.pylint.rc'
-"let g:pymode_options_max_line_length = 120
+    " override view python doc key shortcut to ctrl-shift-d
+    let g:pymode_doc_bind = "<c-s-d>"
+    let g:pymode_lint_config = '$HOME/.pylint.rc'
+    let g:pymode_options_max_line_length = 120
+
+    let g:pymode_options = 0              " do not change relativenumber
+    let g:pymode_indent = 0               " use vim-python-pep8-indent (upstream of pymode)
+    let g:pymode_lint = 0                 " prefer syntastic; pymode has problems when PyLint was invoked already before VirtualEnvActivate..!?!
+    let g:pymode_virtualenv = 0           " use virtualenv plugin (required for pylint?!)
+    let g:pymode_doc = 0                  " use pydoc
+    let g:pymode_rope_completion = 0      " use YouCompleteMe instead (python-jedi)
+    let g:pymode_syntax_space_errors = 0  " using MyWhitespaceSetup
+    let g:pymode_trim_whitespaces = 0
+    let g:pymode_debug = 0
+    let g:pymode_rope = 0
+
+    let g:pydoc_window_lines=0.5          " use 50% height
+    let g:pydoc_perform_mappings=0
+" }}}
 autocmd FileType python set colorcolumn=120
 highlight OverLength ctermbg=yellow ctermbg=white guibg=#59F929
 match OverLength /\%121v.\+/
 
 let mapleader = ' '
 
-" jedi-vim
-let g:jedi#use_tabs_not_buffers = 0 " 0: jump to buffer, 1 : jump to tab
-let g:jedi#goto_command = "<leader>d"
-let g:jedi#goto_assignments_command = "<leader>l"
-let g:jedi#goto_stubs_command = "<leader>s"
-let g:jedi#goto_definitions_command = "<leader>k"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#completions_command = "<leader>m"
-let g:jedi#rename_command = "<leader>r"
+" jedi-vim (besides YCM with jedi library) {{{1
+    let g:jedi#use_tabs_not_buffers = 0 " 0: jump to buffer, 1 : jump to tab
+    let g:jedi#goto_command = "<leader>d"
+    " let g:jedi#goto_assignments_command = "<leader>l"
+    let g:jedi#goto_stubs_command = "<leader>s"
+    " let g:jedi#goto_definitions_command = "<leader>k"
+    let g:jedi#completions_command = "<leader>m"
+
+  " let g:jedi#force_py_version = 3
+  let g:jedi#auto_vim_configuration = 0
+  let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
+  let g:jedi#goto_definitions_command = ''  " dynamically done for ft=python.
+    " let g:jedi#rename_command = "<leader>r"
+  let g:jedi#rename_command = 'cR'
+    " let g:jedi#usages_command = "<leader>n"
+  let g:jedi#usages_command = 'gr'
+  let g:jedi#completions_enabled = 1
+
+  " Unite/ref and pydoc are more useful.
+  let g:jedi#documentation_command = '<Leader>_K'
+  " Manually setup jedi's call signatures.
+  let g:jedi#show_call_signatures = 1
+  if &rtp =~ '\<jedi\>'
+    augroup JediSetup
+      au!
+      au FileType python call jedi#configure_call_signatures()
+    augroup END
+  endif
+
+  let g:jedi#auto_close_doc = 1
+    " if g:jedi#auto_close_doc
+    "     " close preview if its still open after insert
+    "     autocmd InsertLeave <buffer> if pumvisible() == 0|pclose|endif
+    " end
+  " }}}1 
+
+"jshint"
+let g:syntastic_javascript_checkers = ['']
+" let g:syntastic_javascript_checkers = ['jshint']
+
+" Syntastic {{{2
+      set statusline+=%#warningmsg#
+      set statusline+=%{SyntasticStatuslineFlag()}
+      set statusline+=%*
+
+      let g:syntastic_enable_signs=1
+      let g:syntastic_check_on_open = 1
+      let g:syntastic_check_on_wq=1  " Only for active filetypes.
+      let g:syntastic_auto_loc_list=1
+      let g:syntastic_always_populate_loc_list=1
+      let g:syntastic_python_pylint_post_args="--max-line-length=120"
+      " let g:syntastic_echo_current_error=0 " TEST: faster?!
+      let g:syntastic_mode_map = {
+            \ 'mode': 'passive',
+            \ 'active_filetypes': ['ruby', 'php', 'lua', 'python', 'sh', 'zsh'],
+            \ 'passive_filetypes': [] }
+      let g:syntastic_error_symbol='✗'
+      let g:syntastic_warning_symbol='⚠'
+      let g:syntastic_aggregate_errors = 0
+      let g:syntastic_python_checkers = ['python', 'frosted', 'flake8', 'pep8']
+
+      " let g:syntastic_php_checkers = ['php']
+      let g:syntastic_loc_list_height = 1 " handled via qf autocommand: AdjustWindowHeight
+
+      " See 'syntastic_quiet_messages' and 'syntastic_<filetype>_<checker>_quiet_messages'
+      " let g:syntastic_quiet_messages = {
+      "       \ "level": "warnings",
+      "       \ "type":  "style",
+      "       \ "regex": '\m\[C03\d\d\]',
+      "       \ "file":  ['\m^/usr/include/', '\m\c\.h$'] }
+      let g:syntastic_quiet_messages = { "level": [], "type": ["style"] }
+
+      fun! SyntasticToggleQuiet(k, v, scope)
+        let varname = a:scope."syntastic_quiet_messages"
+        if !exists(varname) | exec 'let '.varname.' = { "level": [], "type": ["style"] }' | endif
+        exec 'let idx = index('.varname.'[a:k], a:v)'
+        if idx == -1
+          exec 'call add('.varname.'[a:k], a:v)'
+          echom 'Syntastic: '.a:k.':'.a:v.' disabled (filtered).'
+        else
+          exec 'call remove('.varname.'[a:k], idx)'
+          echom 'Syntastic: '.a:k.':'.a:v.' enabled (not filtered).'
+        endif
+      endfun
+      command! SyntasticToggleWarnings call SyntasticToggleQuiet('level', 'warnings', "g:")
+      command! SyntasticToggleStyle    call SyntasticToggleQuiet('type', 'style', "g:")
+      command! SyntasticToggleWarningsBuffer call SyntasticToggleQuiet('level', 'warnings', "b:")
+      command! SyntasticToggleStyleBuffer    call SyntasticToggleQuiet('type', 'style', "b:")
+
+      fun! MySyntasticCheckAll()
+        let save = g:syntastic_quiet_messages
+        let g:syntastic_quiet_messages = { "level": [], 'type': [] }
+        SyntasticCheck
+        let g:syntastic_quiet_messages = save
+      endfun
+      command! MySyntasticCheckAll call MySyntasticCheckAll()
+
+      " Source: https://github.com/scrooloose/syntastic/issues/1361#issuecomment-82312541
+      function! SyntasticDisableToggle()
+          if !exists('s:syntastic_disabled')
+              let s:syntastic_disabled = 0
+          endif
+          if !s:syntastic_disabled
+              let s:modemap_save = deepcopy(g:syntastic_mode_map)
+              let g:syntastic_mode_map['active_filetypes'] = []
+              let g:syntastic_mode_map['mode'] = 'passive'
+              let s:syntastic_disabled = 1
+              SyntasticReset
+              echom "Syntastic disabled."
+          else
+              let g:syntastic_mode_map = deepcopy(s:modemap_save)
+              let s:syntastic_disabled = 0
+              echom "Syntastic enabled."
+          endif
+      endfunction
+      command! SyntasticDisableToggle call SyntasticDisableToggle()
+" }}}
 
 highlight clear SignColumn
 
@@ -322,8 +448,8 @@ map <silent> gs :Gstatus<CR>
 " search the word in current register
 nnoremap <silent> <leader>g  /<C-R>"<CR>
 
-map <silent> <leader>ss :source ~/.vimrc<cr>
-map <silent> <leader>ee :e ~/.vimrc<cr>
+map <silent> <leader>sv :source ~/.vimrc<cr>
+map <silent> <leader>ev :e ~/.vimrc<cr>
 map <leader>p :!mkdir -p %:p:h<cr>
 map <leader>ni :set noautoindent<cr>
 
@@ -648,22 +774,6 @@ nmap =t :%! tidy -config ~/.tidyrc<CR>
 "Comment Code"
 " map <C-K>c <c-_><c-_>
 
-"jshint"
-let g:syntastic_javascript_checkers = ['']
-" let g:syntastic_javascript_checkers = ['jshint']
-
-"Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_python_pylint_post_args="--max-line-length=120"
-execute pathogen#infect()
-
 "font size for macvim"
 if has("gui_running")
   if has("gui_macvim")
@@ -717,12 +827,62 @@ autocmd BufEnter,FocusGained * :set relativenumber
 "DelimitMate
 imap <C-c> <CR><Esc>O
 
-"YCM
-let g:ycm_add_preview_to_completeopt=0
-let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+ " YouCompleteMe Ycm ycm {{{
+    let g:ycm_add_preview_to_completeopt=0
+    let g:ycm_confirm_extra_conf=0
+    set completeopt-=preview
+    nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
+    " This needs to be the Python that YCM was built against.  (set in ~/.zshrc.local).
+    if filereadable($PYTHON_YCM)
+      let g:ycm_path_to_python_interpreter = $PYTHON_YCM
+      " let g:ycm_path_to_python_interpreter = 'python-in-terminal'
+    endif
+
+    " Python don't use YCM, it use Jedi-vim
+    let g:ycm_filetype_blacklist = {
+        \ 'python' : 1,
+        \ 'ycmblacklisted': 1
+        \}
+    let g:ycm_complete_in_comments = 1
+    let g:ycm_complete_in_strings = 1
+    let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_extra_conf_globlist = ['~/src/awesome/.ycm_extra_conf.py']
+
+    " Jump mappings, overridden in Python mode with jedi-vim.
+    nnoremap <leader>j :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gj :YcmCompleter GoToDeclaration<CR>
+    fun! MySetupPythonMappings()
+        nnoremap <buffer> <leader>j  :call jedi#goto_definitions()<CR>
+        nnoremap <buffer> <leader>gj :call jedi#goto_assignments()<CR>
+    endfun
+    augroup vimrc_jump_maps
+      au!
+      au FileType python call MySetupPythonMappings()
+    augroup END
+
+    " Deactivated: causes huge RAM usage (YCM issue 595)
+    " let g:ycm_collect_identifiers_from_tags_files = 1
+
+    " EXPERIMENTAL: auto-popups and experimenting with SuperTab
+    " NOTE: this skips the following map setup (also for C-n):
+    "       ' pumvisible() ? "\<C-p>" : "\' . key .'"'
+    let g:ycm_key_list_select_completion = []
+    let g:ycm_key_list_previous_completion = []
+
+    let g:ycm_semantic_triggers =  {
+        \   'c' : ['->', '.'],
+        \   'objc' : ['->', '.'],
+        \   'ocaml' : ['.', '#'],
+        \   'cpp,objcpp' : ['->', '.', '::'],
+        \   'perl' : ['->'],
+        \   'php' : ['->', '::'],
+        \   'cs,java,javascript,d,vim,python,perl6,scala,vb,elixir,go' : ['.'],
+        \   'ruby' : ['.', '::'],
+        \   'lua' : ['.', ':'],
+        \   'erlang' : [':'],
+        \ }
+  " }}}
 
 " Platform
 function! MySys()
