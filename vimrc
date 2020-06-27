@@ -4,7 +4,7 @@ scriptencoding utf-8
 " A bit faster than $SHELL (zsh).
 set shell=/bin/sh
 
-let g:python_host_prog='/usr/local/bin/python'
+let g:python_host_prog='/usr/bin/python'
 let g:python3_host_prog='/usr/bin/python3'
 
 
@@ -44,12 +44,11 @@ filetype plugin indent on                " required
     Plug 'mhinz/vim-startify'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    "中文帮助文档
-    Plug 'yianwillis/vimcdoc'
+    Plug 'yianwillis/vimcdoc'  "中文帮助文档
 
     Plug 'jiangmiao/auto-pairs'
     "Plug 'Valloric/ListToggle'
-    Plug 'SirVer/ultisnips'
+    " Plug 'SirVer/ultisnips'
     Plug 't9md/vim-quickhl'
     "..................................
     " vim-scripts repos
@@ -62,8 +61,6 @@ filetype plugin indent on                " required
     Plug 'vim-scripts/VimIM'
     Plug 'vim-scripts/JavaScript-syntax'
     Plug 'vim-scripts/jQuery'
-    Plug 'othree/html5.vim'
-    Plug 'groenewege/vim-less'
     Plug 'vim-scripts/Markdown'
     Plug 'vim-scripts/Markdown-syntax'
     Plug 'vim-scripts/snipmate-snippets'
@@ -72,21 +69,20 @@ filetype plugin indent on                " required
     " non github repos
     " Plug 'git://git.wincent.com/command-t.git'
     "......................................
+    "Plug 'wincent/command-t'
     Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
     " FZF is another fuzzy file search
     " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'crusoexia/vim-monokai'
-    Plug 'sjl/gundo.vim'
+    Plug 'crusoexia/vim-monokai' " Monokai colorschema
+    Plug 'nanotech/jellybeans.vim' " A colorful, dark color scheme,
+    Plug 'othree/html5.vim'
+    Plug 'groenewege/vim-less'
     Plug 'ap/vim-css-color'
-    Plug 'nanotech/jellybeans.vim'
     Plug 'kchmck/vim-coffee-script'
     Plug 'csexton/trailertrash.vim'
     Plug 'scrooloose/nerdtree'
     Plug 'preservim/nerdcommenter'
-    Plug 'juvenn/mustache.vim'
-    Plug 'yaymukund/vim-rabl'
-    Plug 'int3/vim-extradite'
-    Plug 'sjl/splice.vim'
+
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-haml'
     Plug 'tpope/vim-repeat'
@@ -109,9 +105,9 @@ filetype plugin indent on                " required
     Plug 'Raimondi/delimitMate'
     Plug 'tomtom/tcomment_vim'
     Plug 'jshint/jshint'
-    Plug 'Shutnik/jshint2.vim'
-    Plug 'mattn/gist-vim'
-    Plug 'mattn/webapi-vim'
+    " Plug 'Shutnik/jshint2.vim'
+    " Plug 'mattn/gist-vim'
+    " Plug 'mattn/webapi-vim'
     Plug 'elzr/vim-json'
     Plug 'digitaltoad/vim-jade'
     Plug 'moll/vim-node'
@@ -121,13 +117,14 @@ filetype plugin indent on                " required
     Plug 'mileszs/ack.vim'
     Plug 'juneedahamed/svnj.vim'
     Plug 'majutsushi/tagbar'
+    Plug 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
     " Plug 'vim-scripts/dbext.vim'
     " Plug 'python_fold_compact'
-    " Plug 'vasconcelloslf/vim-interestingwords'
-    Plug 'vasconcelloslf/vim-interestingwords'
-    Plug 'leafgarland/typescript-vim'
-    Plug 'Quramy/tsuquyomi'
+    Plug 'lfv89/vim-interestingwords'
+    Plug 'leafgarland/typescript-vim'  "Typescript IDE
+    Plug 'Quramy/tsuquyomi'  "Typescript IDE
     " Plug 'dense-analysis/ale'
+    Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
     Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
     Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -238,9 +235,10 @@ colorscheme desert256
 colorscheme wombat
 colorscheme synic
 colorscheme monokai
+colorscheme jellybeans
 set background=dark    " Setting dark mode
-autocmd ColorScheme janah highlight Normal ctermbg=235
-colorscheme janah
+" autocmd ColorScheme janah highlight Normal ctermbg=235
+" colorscheme janah
 
 " pymode python-mode setting {{{
     " override go-to.definition key shortcut to ctrl-]
@@ -308,7 +306,7 @@ let mapleader = ' '
     "     " close preview if its still open after insert
     "     autocmd InsertLeave <buffer> if pumvisible() == 0|pclose|endif
     " end
-  " }}}1 
+  " }}}1
 
 "jshint"
 let g:syntastic_javascript_checkers = ['']
@@ -464,7 +462,7 @@ map <F5> :SVNDiff<CR>
 
 " send current word to CtrlP
 " map <F6> <C-P><C-\>w
-" search file of current workd under cursor 
+" search file of current workd under cursor
 noremap <F6> :Leaderf! file  --cword<CR>
 
 "Find javascript"
@@ -577,7 +575,7 @@ let g:Lf_NormalMap = {
 	\ }
 
 
-" tags need global command, on Mac: brew install global           
+" tags need global command, on Mac: brew install global
 " should use `Leaderf gtags --update` first
 " let g:Lf_GtagsAutoGenerate = 0
 " let g:Lf_Gtagslabel = 'native-pygments'
@@ -614,7 +612,7 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 "=========================== end of NERDComment ================================
 
@@ -681,7 +679,7 @@ nmap <leader>9 <Plug>AirlineSelectTab9]
 " nmap <leader>3 :bfirst<CR>:2bn<CR>
 " nmap <leader>4 :bfirst<CR>:3bn<CR>
 
-nmap <tab> :bn<cr> " "设置tab键映射下一个buffer
+nnoremap <tab> :bn<cr> " "设置tab键映射下一个buffer
 "
 " powerline symbols
 let g:airline_left_sep = ''
@@ -732,7 +730,7 @@ let g:startify_files_number           = 18
 " Update session automatically as you exit vim
 let g:startify_session_persistence    = 1
 
-" When opening a file or bookmark, don't change to its directory.
+" When opening a file or bookmark, don't change to its directory. Always keep project directory as working directory
 let g:startify_change_to_dir = 0
 
 " Simplify the startify list to just recent files and sessions
@@ -828,6 +826,9 @@ autocmd BufEnter,FocusGained * :set relativenumber
 imap <C-c> <CR><Esc>O
 
  " YouCompleteMe Ycm ycm {{{
+
+ let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
     let g:ycm_add_preview_to_completeopt=0
     let g:ycm_confirm_extra_conf=0
     set completeopt-=preview
@@ -848,6 +849,7 @@ imap <C-c> <CR><Esc>O
     let g:ycm_complete_in_strings = 1
     let g:ycm_collect_identifiers_from_comments_and_strings = 1
     let g:ycm_extra_conf_globlist = ['~/src/awesome/.ycm_extra_conf.py']
+    let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
 
     " Jump mappings, overridden in Python mode with jedi-vim.
     nnoremap <leader>j :YcmCompleter GoToDefinition<CR>
@@ -883,6 +885,13 @@ imap <C-c> <CR><Esc>O
         \   'erlang' : [':'],
         \ }
   " }}}
+
+" vim-indent-guides
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 " Platform
 function! MySys()
