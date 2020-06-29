@@ -401,6 +401,7 @@ autocmd BufNewFile,BufRead *.aspx set filetype=javascript
 autocmd BufNewFile,BufRead *.ascx set filetype=javascript
 autocmd BufNewFile,BufRead *.asmx set filetype=aspnet
 autocmd BufNewFile,BufRead *.py set foldmethod=indent
+" :au BufAdd,BufNewFile * nested tab sball   " To open each buffer in its own tabpage"
 
 " NERDTree {{{
 let NERDTreeShowBookmarks=1
@@ -664,6 +665,7 @@ let g:airline#extensions#tabline#show_tab_count = 1    " dont show tab numbers o
 let g:airline#extensions#tabline#tab_min_count = 2     " minimum of 2 tabs needed to display the tabline
 let g:airline#extensions#tabline#show_splits = 0       " disables the buffer name that displays on the right of the tabline
 let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
+let g:airline#extensions#tabline#overflow_marker = '>>>'
 
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
@@ -826,6 +828,7 @@ nnoremap <Leader>e :e<CR>
 nnoremap <Leader>w :wa<CR>
 nnoremap <Leader>wa :wa<CR>
 nnoremap <Leader>qa :qa<CR>
+nnoremap <C-c> :qa<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 
