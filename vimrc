@@ -676,6 +676,9 @@ nmap <leader>6 <Plug>AirlineSelectTab6
 nmap <leader>7 <Plug>AirlineSelectTab7
 nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9]
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>= <Plug>AirlineSelectNextTab
+<
 " below is another method for above mapping, but is not as good as above
 " nmap <leader>1 :bfirst<CR>
 " nmap <leader>2 :bfirst<CR>:bn<CR>
@@ -921,7 +924,7 @@ let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=DarkBlue   ctermbg=8
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGreen ctermbg=7
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGreen ctermbg=0
 
 " Platform
 function! MySys()
