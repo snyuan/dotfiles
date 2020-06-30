@@ -123,12 +123,12 @@ filetype plugin indent on                " required
     Plug 'lfv89/vim-interestingwords'
     Plug 'leafgarland/typescript-vim'  "Typescript IDE
     Plug 'Quramy/tsuquyomi'  "Typescript IDE
-    " Plug 'dense-analysis/ale'
+    " Plug 'dense-analysis/ale' " Asynchronous Lint Engine
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
     Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
-    Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
     Plug 'davidhalter/jedi-vim'
+    Plug 'ervandew/supertab'
 
 " Initialize plugin system
 call plug#end()
@@ -240,32 +240,6 @@ set background=dark    " Setting dark mode
 " autocmd ColorScheme janah highlight Normal ctermbg=235
 " colorscheme janah
 
-" pymode python-mode setting {{{
-    " override go-to.definition key shortcut to ctrl-]
-    let g:pymode_rope_goto_definition_bind = "<c-]>"
-
-    " override run current python file key shortcut to ctrl-shift-e
-    let g:pymode_run_bind = "<c-s-e>"
-
-    " override view python doc key shortcut to ctrl-shift-d
-    let g:pymode_doc_bind = "<c-s-d>"
-    let g:pymode_lint_config = '$HOME/.pylint.rc'
-    let g:pymode_options_max_line_length = 120
-
-    let g:pymode_options = 0              " do not change relativenumber
-    let g:pymode_indent = 0               " use vim-python-pep8-indent (upstream of pymode)
-    let g:pymode_lint = 0                 " prefer syntastic; pymode has problems when PyLint was invoked already before VirtualEnvActivate..!?!
-    let g:pymode_virtualenv = 0           " use virtualenv plugin (required for pylint?!)
-    let g:pymode_doc = 0                  " use pydoc
-    let g:pymode_rope_completion = 0      " use YouCompleteMe instead (python-jedi)
-    let g:pymode_syntax_space_errors = 0  " using MyWhitespaceSetup
-    let g:pymode_trim_whitespaces = 0
-    let g:pymode_debug = 0
-    let g:pymode_rope = 0
-
-    let g:pydoc_window_lines=0.5          " use 50% height
-    let g:pydoc_perform_mappings=0
-" }}}
 autocmd FileType python set colorcolumn=120
 highlight OverLength ctermbg=yellow ctermbg=white guibg=#59F929
 match OverLength /\%121v.\+/
@@ -277,35 +251,32 @@ let mapleader = ' '
     let g:jedi#goto_command = "<leader>d"
     " let g:jedi#goto_assignments_command = "<leader>l"
     let g:jedi#goto_stubs_command = "<leader>s"
-    " let g:jedi#goto_definitions_command = "<leader>k"
     let g:jedi#completions_command = "<leader>m"
 
-  " let g:jedi#force_py_version = 3
-  let g:jedi#auto_vim_configuration = 0
-  let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
-  let g:jedi#goto_definitions_command = ''  " dynamically done for ft=python.
-    " let g:jedi#rename_command = "<leader>r"
-  let g:jedi#rename_command = 'cR'
-    " let g:jedi#usages_command = "<leader>n"
-  let g:jedi#usages_command = 'gr'
-  let g:jedi#completions_enabled = 1
+    " let g:jedi#force_py_version = 3
+    let g:jedi#auto_vim_configuration = 0
+    let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
+    let g:jedi#rename_command = "<leader>r"
+    " let g:jedi#rename_command = 'cR'
+    let g:jedi#usages_command = "<leader>n"
+    " let g:jedi#usages_command = 'gr'
 
-  " Unite/ref and pydoc are more useful.
-  let g:jedi#documentation_command = '<Leader>_K'
-  " Manually setup jedi's call signatures.
-  let g:jedi#show_call_signatures = 1
-  if &rtp =~ '\<jedi\>'
-    augroup JediSetup
-      au!
-      au FileType python call jedi#configure_call_signatures()
-    augroup END
-  endif
+    " Unite/ref and pydoc are more useful. Default: <K>
+" let g:jedi#documentation_command = '<Leader>_K'
+    " Manually setup jedi's call signatures.
+    let g:jedi#show_call_signatures = 1
+    if &rtp =~ '\<jedi\>'
+      augroup JediSetup
+        au!
+        au FileType python call jedi#configure_call_signatures()
+      augroup END
+    endif
 
-  let g:jedi#auto_close_doc = 1
-    " if g:jedi#auto_close_doc
-    "     " close preview if its still open after insert
-    "     autocmd InsertLeave <buffer> if pumvisible() == 0|pclose|endif
-    " end
+    let g:jedi#auto_close_doc = 1
+    if g:jedi#auto_close_doc
+        " close preview if its still open after insert
+        autocmd insertleave <buffer> if pumvisible() == 0|pclose|endif
+    end
   " }}}1
 
 "jshint"
