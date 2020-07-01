@@ -123,7 +123,8 @@ filetype plugin indent on                " required
     Plug 'lfv89/vim-interestingwords'
     Plug 'leafgarland/typescript-vim'  "Typescript IDE
     Plug 'Quramy/tsuquyomi'  "Typescript IDE
-    " Plug 'dense-analysis/ale' " Asynchronous Lint Engine
+    " below must install :pip3 install pylint
+    Plug 'dense-analysis/ale' " Asynchronous Lint Engine
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
     Plug 'scrooloose/syntastic', { 'do': function('Installjshint') }
