@@ -501,6 +501,8 @@ noremap bd :bd<CR>
     nnoremap <silent> <leader>f :FZF<cr>
     nnoremap <silent> <leader>F :FZF ~<cr>
     nnoremap <leader>ff :Files<cr>
+    nnoremap <leader>fl :Lines<cr>
+    nnoremap <leader>fs :BLines<cr>
     nnoremap <leader>fb :Buffers<cr>
     nnoremap <leader>ft :Tags<cr>
     nnoremap <leader>fh :History<cr>
