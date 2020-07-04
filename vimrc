@@ -198,7 +198,7 @@ let g:rainbow_active = 1
 
 "vim
 set nu
-set ts=2                            "tab stop 2
+set ts=4                            "tab stop 4
 set autoindent
 set smartindent                     "use smart indenting
 set bs=2                            "allow backspace in insert mode
@@ -271,7 +271,11 @@ set background=dark    " Setting dark mode
     let g:pydoc_perform_mappings=0
 hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
 " }}}
-autocmd BufWritePre *.py ImpSort!  " sort improt of python 
+
+" impSort
+" autocmd BufWritePre *.py ImpSort!  " sort improt of python automatically on save
+nnoremap <leader>is :<c-u>ImpSort!<cr>
+
 autocmd FileType python set colorcolumn=120
 " below need to :  pip3 install yapf  ; yapf doesn't work now, so comment out
 " autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
