@@ -122,7 +122,8 @@ filetype plugin indent on                " required
     Plug 'lfv89/vim-interestingwords'
     Plug 'leafgarland/typescript-vim'  "Typescript IDE
     Plug 'Quramy/tsuquyomi'  "Typescript IDE
-    " Plug 'dense-analysis/ale'
+    " below must install :pip3 install pylint
+    Plug 'dense-analysis/ale' " Asynchronous Lint Engine
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'nvie/vim-flake8'
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -263,7 +264,7 @@ set background=dark    " Setting dark mode
     let g:pymode_doc = 0                  " use pydoc
     let g:pymode_rope_completion = 0      " use YouCompleteMe instead (python-jedi)
     let g:pymode_syntax_space_errors = 0  " using MyWhitespaceSetup
-    let g:pymode_trim_whitespaces = 0
+let g:pymode_trim_whitespaces = 0
     let g:pymode_debug = 0
     let g:pymode_rope = 0
 
@@ -290,7 +291,6 @@ let maplocalleader="\<space>"
     let g:jedi#goto_command = "<leader>d"
     " let g:jedi#goto_assignments_command = "<leader>l"
     let g:jedi#goto_stubs_command = "<leader>s"
-    " let g:jedi#goto_definitions_command = "<leader>k"
     let g:jedi#completions_command = "<leader>m"
 
   " let g:jedi#force_py_version = 3
@@ -310,11 +310,11 @@ let maplocalleader="\<space>"
     augroup END
   endif
 
-  let g:jedi#auto_close_doc = 1
-    " if g:jedi#auto_close_doc
-    "     " close preview if its still open after insert
-    "     autocmd InsertLeave <buffer> if pumvisible() == 0|pclose|endif
-    " end
+    let g:jedi#auto_close_doc = 1
+    if g:jedi#auto_close_doc
+        " close preview if its still open after insert
+        autocmd insertleave <buffer> if pumvisible() == 0|pclose|endif
+    end
   " }}}1
 
 "jshint"
