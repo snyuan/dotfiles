@@ -565,17 +565,17 @@ let g:airline_theme='badwolf'
 "使用powerline打过补丁的字体 on my ubuntu: Powerline fonts installed to /home/andy/.local/share/fonts
 let g:airline_powerline_fonts = 1
 "关闭状态显示空白符号计数,这个对我用处不大
-let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#whitespace#symbol = '!'
 " 开启tagbar
 let g:airline#extensions#tagbar#enabled = 1
 
 
 let g:airline#extensions#tabline#enabled=1 "顶部tab显示
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#show_tab_nr = 1 "开启显示tab number
+let g:airline#extensions#tabline#tab_nr_type = 2 " tab number 类型
 let g:airline#extensions#tabline#formatter = 'default'
-let g:airline#extensions#tabline#buffer_nr_show = 1 "开启tabline
+" let g:airline#extensions#tabline#buffer_nr_show = 1 "开启显示buffer number
 let g:airline#extensions#tabline#fnametruncate = 16
 let g:airline#extensions#tabline#fnamecollapse = 2
 let g:airline#extensions#tabline#buffer_idx_mode = 1

@@ -54,7 +54,7 @@ alias sql="sqlite3"
 alias sqlite="sqlite3"
 
 # FCT
-alias vpnsvn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt6'
+alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt6'
 alias emsd='/opt/forticlient/epctrl -d'
 
 # SVN commands
