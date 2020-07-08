@@ -66,14 +66,24 @@ alias ssw="svn st web"
 alias sswm="svn st web|grep '[MA]'"
 alias ssmw="svn st web|grep '[MA]'"
 alias sg="svn log --limit 3"
-alias sgl="svn log --limit $1"
-alias sgr="svn log -v -r $1"
 alias sr="svn revert"
 
+# GIT commands
+alias gd="git diff"
+alias gds="git diff --compact-summary"
+alias gp="git pull"
+alias gst="git status"
+alias gsm="git status |grep modified"
+alias gsw="git status web"
+alias gswm="git status web|grep modified"
+alias gsmw="gitstatus web|grep modified"
+alias gg="git log -5"
+alias gc="git checkout"
+
 #ReviewBoard
-alias rd="~/bin/rb_genco.py diff"
-alias rp="~/bin/rb_genco.py post"
-alias ru="~/bin/rb_genco.py update"
+alias rd="rb_genco_git diff"
+alias rp="rb_genco_git post"
+alias ru="rb_genco_git update"
 
 # Fortinet Shortcuts
 alias vnote='vi ~/Dropbox/Documents/FSA_note.txt'

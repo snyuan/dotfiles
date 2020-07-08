@@ -83,6 +83,7 @@ filetype plugin indent on                " required
     Plug 'preservim/nerdcommenter'
 
     Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
     Plug 'tpope/vim-haml'
     Plug 'tpope/vim-repeat'
     Plug 'tpope/vim-endwise'
@@ -467,16 +468,14 @@ cabbr <expr> %% expand('%:p:h')
 
 map <F1> :EraseBadWhitespace <CR>
 map <F2> :TagbarToggle<CR>
-map <F3> :SVNBlame<CR>
-map <F4> :SVNLog<CR>
-map <F5> :SVNDiff<CR>
-
-" search file of current workd under cursor
-noremap <F6> :FZF -q <C-R>=expand("<cword>")<CR><CR>
-
+map <F3> :Git blame<CR>
+map <F4> :Git log<CR>
+map <F5> :Gstatus<CR>
+map <F6> :Git diff <CR>
 "Find javascript"
 " map <F6> /Index: <CR> zz
-map <F7> :%y+ <CR>
+" search file of current workd under cursor
+noremap <F7> :FZF -q <C-R>=expand("<cword>")<CR><CR>
 map <F8> :NERDTreeToggle<CR>
 " below list buffers and switch to input buffer
 nnoremap <F9> :buffers<CR>:buffer<Space>
@@ -494,7 +493,6 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 " buffers
 set switchbuf=usetab
-noremap <S-tab> :bp<CR>
 noremap bn :bn<CR>
 noremap bp :bp<CR>
 noremap bd :bd<CR>
@@ -605,8 +603,6 @@ nmap <leader>= <Plug>AirlineSelectNextTab
 " nmap <leader>3 :bfirst<CR>:2bn<CR>
 " nmap <leader>4 :bfirst<CR>:3bn<CR>
 
-nnoremap <tab> :bn<cr> " "设置tab键映射下一个buffer
-"
 " powerline symbols
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -616,7 +612,7 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-let g:airline_section_b = '%{getcwd()}' " in section B of the status line display the CWD
+" let g:airline_section_b = '%{getcwd()}' " in section B of the status line display the CWD
 " show full file path in status bar
 " let  g:airline_section_c='%F'
 
@@ -845,6 +841,19 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=DarkBlue   ctermbg=8
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGreen ctermbg=0
+
+" vim-fugitive {{{
+
+" }}}
+
+
+" vim-gitgutter {{{
+function! GitStatus()
+      let [a,m,r] = GitGutterGetHunkSummary()
+      return printf('+%d ~%d -%d', a, m, r)
+    endfunction
+    set statusline+=%{GitStatus()}
+" }}}
 
 " Platform
 function! MySys()
