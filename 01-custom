@@ -1,0 +1,12 @@
+#!/bin/sh
+# sudo ln -s ~/dotfiles/01-custom /etc/update-motd.d/01-custom 
+echo "GENERAL SYSTEM INFORMATION"
+/usr/bin/screenfetch
+echo
+echo "SYSTEM DISK USAGE"
+export TERM=xterm; inxi -D
+echo
+echo "CURRENT WEATHER AT THE LOCATION"
+# Show weather information. Change the city name to fit your location
+ansiweather -l vancouver,bc,canada -d true -s true
+ansiweather -l vancouver,bc,canada -f 7
