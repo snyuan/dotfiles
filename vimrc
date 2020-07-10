@@ -468,7 +468,7 @@ map <leader>ni :set noautoindent<cr>
 "Expression mappings.
 cabbr <expr> %% expand('%:p:h')
 
-map <F1> :EraseBadWhitespace <CR>
+map <F1> :retab!<bar>EraseBadWhitespace<CR>
 map <F2> :TagbarToggle<CR>
 map <F3> :G blame<CR>
 map <F4> :G log<CR>
