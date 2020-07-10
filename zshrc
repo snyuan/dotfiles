@@ -52,6 +52,7 @@ alias tint2="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
 alias tint="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
 alias sql="sqlite3"
 alias sqlite="sqlite3"
+alias dot="cd ~/dotfiles"
 
 # FCT
 alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt6'
@@ -72,7 +73,7 @@ alias sr="svn revert"
 alias gd="git diff"
 alias gds="git diff --compact-summary"
 alias gp="git pull"
-alias gst="git status"
+alias gst="git status -uno"
 alias gsm="git status |grep modified"
 alias gsw="git status web"
 alias gswm="git status web|grep modified"
@@ -86,9 +87,10 @@ alias rp="rb_genco_git post"
 alias ru="rb_genco_git update"
 
 # Fortinet Shortcuts
-alias vnote='vi ~/Dropbox/Documents/FSA_note.txt'
-alias cnote='cat ~/Dropbox/Documents/FSA_note.txt'
-alias mnote='more ~/Dropbox/Documents/FSA_note.txt'
+alias gitlab='cd ~/gitlab'
+alias vnote='vi ~/Dropbox/ftntwork/FSA_note.txt'
+alias cnote='cat ~/Dropbox/ftntwork/FSA_note.txt'
+alias mnote='more ~/Dropbox/ftntwork/FSA_note.txt'
 alias fsa='cd ~/opt/fsa'
 alias fsa2='cd ~/opt/fsapy2'
 alias cdir='cd ~/opt/fsa && ./fdev.sh'
@@ -106,8 +108,8 @@ alias t4='cd ~/opt/fsa/root/trunk4'
 alias t4w='cd ~/opt/fsa/root/trunk4/web'
 alias trunk='cd ~/opt/fsa/root/trunk'
 alias trunkw='cd ~/opt/fsa/root/trunkw'
-alias br3='cd ~/opt/fsa/root/br3'
-alias br3w='cd ~/opt/fsa/root/br3/web'
+alias br3='cd ~/opt/fsa/root/3.x'
+alias br3w='cd ~/opt/fsa/root/3.x/web'
 alias br31='cd ~/opt/fsa/root/br3_1'
 alias br31w='cd ~/opt/fsa/root/br3_1/web'
 alias br32='cd ~/opt/fsa/root/br3_2'

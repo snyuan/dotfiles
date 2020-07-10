@@ -468,10 +468,10 @@ cabbr <expr> %% expand('%:p:h')
 
 map <F1> :EraseBadWhitespace <CR>
 map <F2> :TagbarToggle<CR>
-map <F3> :Git blame<CR>
-map <F4> :Git log<CR>
-map <F5> :Gstatus<CR>
-map <F6> :Git diff <CR>
+map <F3> :G blame<CR>
+map <F4> :G log<CR>
+map <F5> :G status -uno<CR>
+map <F6> :G diff <CR>
 "Find javascript"
 " map <F6> /Index: <CR> zz
 " search file of current workd under cursor
