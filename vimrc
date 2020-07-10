@@ -124,7 +124,7 @@ filetype plugin indent on                " required
     Plug 'leafgarland/typescript-vim'  "Typescript IDE
     Plug 'Quramy/tsuquyomi'  "Typescript IDE
     " below must install :pip3 install pylint
-    Plug 'dense-analysis/ale' " Asynchronous Lint Engine
+    Plug 'w0rp/ale' " Asynchronous Lint Engine
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'nvie/vim-flake8'
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -134,7 +134,7 @@ filetype plugin indent on                " required
     Plug 'ervandew/supertab'
     Plug 'tweekmonster/impsort.vim'
     Plug 'frazrepo/vim-rainbow'  " show bracket pair in color
-
+    Plug 'leafOfTree/vim-vue-plugin'
 " Initialize plugin system
 call plug#end()
 
