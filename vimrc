@@ -124,7 +124,7 @@ filetype plugin indent on                " required
     Plug 'leafgarland/typescript-vim'  "Typescript IDE
     Plug 'Quramy/tsuquyomi'  "Typescript IDE
     " below must install :pip3 install pylint
-    Plug 'w0rp/ale' " Asynchronous Lint Engine
+Plug 'w0rp/ale', { 'on':  'ALEToggle' }  " Asynchronous Lint Engine, 默认开始不允许ALE，它性能差，影响光标移动的准确性
     Plug 'Vimjas/vim-python-pep8-indent'
     Plug 'nvie/vim-flake8'
     Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
@@ -267,13 +267,13 @@ set background=dark    " Setting dark mode
     let g:pymode_doc = 0                  " use pydoc
     let g:pymode_rope_completion = 0      " use YouCompleteMe instead (python-jedi)
     let g:pymode_syntax_space_errors = 0  " using MyWhitespaceSetup
-let g:pymode_trim_whitespaces = 0
+    let g:pymode_trim_whitespaces = 0
     let g:pymode_debug = 0
     let g:pymode_rope = 0
 
     let g:pydoc_window_lines=0.5          " use 50% height
     let g:pydoc_perform_mappings=0
-hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
+    hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
 " }}}
 
 " impSort
@@ -325,16 +325,18 @@ let g:syntastic_javascript_checkers = ['']
 " let g:syntastic_javascript_checkers = ['jshint']
 
 " Syntastic {{{2
+  noremap <Leader>sd :SyntasticDisableToggle<CR> 
+      noremap <Leader>st :SyntasticToggleMode<CR> 
+      noremap <Leader>sc :SyntasticCheck<CR> 
       set statusline+=%#warningmsg#
       set statusline+=%{SyntasticStatuslineFlag()}
       set statusline+=%*
 
-      let g:syntastic_enable_signs=1
-      let g:syntastic_check_on_open = 1
+      let g:syntastic_enable_signs=1  " 允许采用vim系统的sign-support 显示标号
+      let g:syntastic_check_on_open = 0 " 默认开始不允许检查，它性能差，影响光标移动的准确性
       let g:syntastic_check_on_wq=1  " Only for active filetypes.
       let g:syntastic_auto_loc_list=1
       let g:syntastic_always_populate_loc_list=1
-      let g:syntastic_python_pylint_post_args="--max-line-length=120"
       " let g:syntastic_echo_current_error=0 " TEST: faster?!
       let g:syntastic_mode_map = {
             \ 'mode': 'passive',
@@ -400,6 +402,14 @@ let g:syntastic_javascript_checkers = ['']
           endif
       endfunction
       command! SyntasticDisableToggle call SyntasticDisableToggle()
+" }}}
+
+" ale {{{
+let g:airline#extensions#ale#enabled = 1
+noremap <Leader>at :ALEToggle<CR>
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
 " }}}
 
 highlight clear SignColumn
