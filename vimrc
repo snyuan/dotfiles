@@ -319,10 +319,6 @@ let maplocalleader="\<space>"
     end
   " }}}1
 
-"jshint"
-let g:syntastic_javascript_checkers = ['']
-" let g:syntastic_javascript_checkers = ['jshint']
-
 " Syntastic {{{2
       noremap <Leader>sd :SyntasticDisableToggle<CR> 
       noremap <Leader>st :SyntasticToggleMode<CR> 
@@ -339,12 +335,16 @@ let g:syntastic_javascript_checkers = ['']
       " let g:syntastic_echo_current_error=0 " TEST: faster?!
       let g:syntastic_mode_map = {
             \ 'mode': 'passive',
-            \ 'active_filetypes': ['ruby', 'php', 'lua', 'python', 'sh', 'zsh'],
-            \ 'passive_filetypes': [] }
+            \ 'active_filetypes': [],
+            \ 'passive_filetypes': ['ruby', 'php', 'lua', 'python', 'sh', 'zsh'] }
       let g:syntastic_error_symbol='✗'
       let g:syntastic_warning_symbol='⚠'
       let g:syntastic_aggregate_errors = 0
       let g:syntastic_python_checkers = ['python', 'frosted', 'flake8', 'pep8']
+
+      "jshint"
+      let g:syntastic_javascript_checkers = ['']
+      " let g:syntastic_javascript_checkers = ['jshint']
 
       " let g:syntastic_php_checkers = ['php']
       let g:syntastic_loc_list_height = 1 " handled via qf autocommand: AdjustWindowHeight
