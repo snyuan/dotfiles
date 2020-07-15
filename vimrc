@@ -71,8 +71,8 @@ filetype plugin indent on                " required
     " FZF is another fuzzy file search
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
-    Plug 'crusoexia/vim-monokai' " Monokai colorschema
-    Plug 'nanotech/jellybeans.vim' " A colorful, dark color scheme,
+    Plug 'crusoexia/vim-monokai' " Monokai colorscheme
+    Plug 'nanotech/jellybeans.vim' " A colorful, dark colorscheme,
     Plug 'othree/html5.vim'
     Plug 'groenewege/vim-less'
     Plug 'ap/vim-css-color'
