@@ -53,7 +53,6 @@ filetype plugin indent on                " required
     "..................................
     " vim-scripts repos
     Plug 'vim-scripts/YankRing.vim'
-    Plug 'vim-scripts/vcscommand.vim'
     Plug 'vim-scripts/ShowPairs'
     Plug 'vim-scripts/SudoEdit.vim'
     Plug 'vim-scripts/EasyGrep'
@@ -325,7 +324,7 @@ let g:syntastic_javascript_checkers = ['']
 " let g:syntastic_javascript_checkers = ['jshint']
 
 " Syntastic {{{2
-  noremap <Leader>sd :SyntasticDisableToggle<CR> 
+      noremap <Leader>sd :SyntasticDisableToggle<CR> 
       noremap <Leader>st :SyntasticToggleMode<CR> 
       noremap <Leader>sc :SyntasticCheck<CR> 
       set statusline+=%#warningmsg#
@@ -484,13 +483,11 @@ map <F3> :G blame<CR>
 map <F4> :G log<CR>
 map <F5> :G status -uno<CR>
 map <F6> :G diff <CR>
-"Find javascript"
-" map <F6> /Index: <CR> zz
-" search file of current workd under cursor
-noremap <F7> :FZF -q <C-R>=expand("<cword>")<CR><CR>
 map <F8> :NERDTreeToggle<CR>
 " below list buffers and switch to input buffer
-nnoremap <F9> :buffers<CR>:buffer<Space>
+" nnoremap <F9> :buffers<CR>:buffer<Space>
+" search file of current workd under cursor
+noremap <F9> :FZF -q <C-R>=expand("<cword>")<CR><CR>
 map <F10> :Ack <C-R><C-W> <C-R>=@% <CR><CR>
 map <F12> :Ack <C-R><C-W><CR>
 
