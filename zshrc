@@ -72,6 +72,7 @@ alias sr="svn revert"
 # GIT commands
 alias gd="git diff"
 alias gds="git diff --compact-summary"
+alias gdr="git diff master origin/master"
 alias gp="git pull"
 alias gst="git status -uno"
 alias gsm="git status |grep modified"
@@ -106,6 +107,8 @@ alias t3='cd ~/opt/fsa/root/trunk3'
 alias t3w='cd ~/opt/fsa/root/trunk3/web'
 alias t4='cd ~/opt/fsa/root/trunk4'
 alias t4w='cd ~/opt/fsa/root/trunk4/web'
+alias t5='cd ~/opt/fsa/root/trunk5'
+alias t5w='cd ~/opt/fsa/root/trunk5/web'
 alias trunk='cd ~/opt/fsa/root/trunk'
 alias trunkw='cd ~/opt/fsa/root/trunkw'
 alias br3='cd ~/opt/fsa/root/3.x'
@@ -198,26 +201,10 @@ alias ssh38="~/bin/fsash.sh 172.16.92.38 g00dPwd19"
 alias ssh89="ssh admin@172.16.92.89"
 alias scp132="~/bin/scp132.sh"
 
-# for android sdk
-# JAVA_HOME="/usr/lib/jvm/java-8-oracle"
-
-JAVA_HOME8="~/opt/jdk1.8.0_144/"
-JAVA_HOME7="~/opt/jdk1.7.0_79/"
-JAVA_HOME=$JAVA_HOME7
-export JAVA_HOME
-JAVA_HOME_BIN=$JAVA_HOME'/bin'
-export PATH=$PATH:$JAVA_HOME_BIN:~/opt/apache-maven-3.5.0/bin
-# To run eclipse with GTK2:https://www.eclipse.org/forums/index.php/t/1081230/
-export SWT_GTK3=0
-
-# now I have removed Android Sdk, so comment below. yeyuan Yuan@Jan 4, 2017
-# export ANDROID_HOME=$HOME/Android/Sdk
-# export PATH=$PATH:$ANDROID_HOME/tools:/usr/bin
 NODE_PATH="/usr/local/lib/node_modules"
 export NODE_PATH
-export PATH=~/bin:$PATH
+export PATH=~/bin:/home/andy/.local/bin:/home/andy/bin:$PATH
 
-alias jhome="update-alternatives --config java"
 unsetopt share_history
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

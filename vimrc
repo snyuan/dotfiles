@@ -240,12 +240,12 @@ set wildmenu
 
 colorscheme desert256
 colorscheme wombat
-colorscheme synic
 colorscheme monokai
 colorscheme jellybeans
 set background=dark    " Setting dark mode
 " autocmd ColorScheme janah highlight Normal ctermbg=235
 " colorscheme janah
+colorscheme synic
 
 " pymode python-mode setting {{{
     " override go-to.definition key shortcut to ctrl-]
@@ -430,7 +430,7 @@ let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.pyc$']
 " Nerdtree auto close and open Nerdtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&b:NERDTreeType == "primary") | q | endif
-" autocmd vimenter * NERDTree
+" autocmd vimenter * NERDTree " 打开vim时自动打开NERDTree
 " NERDTree git symbols
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
