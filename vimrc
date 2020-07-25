@@ -275,10 +275,6 @@ colorscheme synic
     hi pythonSelf  ctermfg=68  guifg=#5f87d7 cterm=bold gui=bold
 " }}}
 
-" impSort
-" autocmd BufWritePre *.py ImpSort!  " sort improt of python automatically on save
-nnoremap <leader>is :<c-u>ImpSort!<cr>
-
 autocmd FileType python set colorcolumn=120
 " below need to :  pip3 install yapf  ; yapf doesn't work now, so comment out
 " autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
@@ -850,6 +846,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=DarkBlue   ctermbg=8
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGreen ctermbg=0
+
+" impSort
+" autocmd BufWritePre *.py ImpSort!  " sort improt of python automatically on save
+nnoremap <leader>is :<c-u>ImpSort!<cr>
 
 " vim-fugitive {{{
 
