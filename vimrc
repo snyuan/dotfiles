@@ -165,8 +165,8 @@ set modeline            " Enable modeline.
 set esckeys             " Cursor keys in insert mode.
 set linespace=0         " Set line-spacing to minimum.
 set nojoinspaces        " Prevents inserting two spaces after punctuation on a join (J)
-set list
-set listchars=tab:>-    " show tab
+" set list
+" set listchars=tab:>-    " show tab
 
 " More natural splits
 set splitbelow          " Horizontal split below current.
@@ -852,7 +852,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGreen ctermbg=0
 nnoremap <leader>is :<c-u>ImpSort!<cr>
 
 " vim-fugitive {{{
-
+vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
 " }}}
 
 
