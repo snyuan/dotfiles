@@ -852,7 +852,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGreen ctermbg=0
 nnoremap <leader>is :<c-u>ImpSort!<cr>
 
 " vim-fugitive {{{
-
+vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
 " }}}
 
 
@@ -864,6 +864,18 @@ function! GitStatus()
     set statusline+=%{GitStatus()}
 " }}}
 
+" vim-vue-plugin {{{
+let g:vim_vue_plugin_use_coffee = 1
+let g:vim_vue_plugin_use_typescript = 1
+let g:vim_vue_plugin_use_less = 1
+let g:vim_vue_plugin_use_sass = 1
+let g:vim_vue_plugin_use_scss = 1
+let g:vim_vue_plugin_use_stylus = 1
+let g:vim_vue_plugin_has_init_indent = 1
+let g:vim_vue_plugin_highlight_vue_attr = 1
+let g:vim_vue_plugin_use_foldexpr  = 1
+let g:vim_vue_plugin_debug = 1
+" }}}
 " Platform
 function! MySys()
   if has("win32")

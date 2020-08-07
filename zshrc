@@ -20,6 +20,7 @@ alias rm="/bin/rm -f"
 alias cp="/bin/cp"
 alias mv="/bin/mv"
 alias ssh="/usr/bin/ssh"
+# manage sshd on Ubuntu
 alias sshstatus="systemctl status ssh"
 alias sshstop="systemctl stop ssh"
 alias sshstart="systemctl start ssh"
@@ -37,8 +38,8 @@ alias mz="more ~/.zshrc"
 alias vv="vim ~/.vimrc"
 alias vz="vim ~/.zshrc"
 alias vp="vim patch.diff"
-alias vundle="vim +PluginInstall +qall"
-# alias vimplug="vim +PlugInstall +qall"
+# alias vundle="vim +PluginInstall +qall"
+alias vimplug="vim +PlugInstall +qall"
 alias sshon="sudo systemsetup -setremotelogin on"
 alias sshoff="sudo systemsetup -setremotelogin off"
 alias ff="find . -name"
@@ -53,6 +54,11 @@ alias tint="/usr/bin/tint2 -c ~/.config/tint2/tint2rc&"
 alias sql="sqlite3"
 alias sqlite="sqlite3"
 alias dot="cd ~/dotfiles"
+
+# Pihyun nx2
+alias upwx="scp -i ~/keys/nx_pub_id_rsa ~/dev/codegit/energy-info-export/dist/w.tgz root@pihyun.cn:/home/app/weixin"
+alias distwx="scp -i ~/keys/nx_pub_id_rsa ~/dev/codegit/energy-info-export/dist.zip root@pihyun.cn:/u01/wars/dist.zip"
+alias pdcslog="scp -i ~/keys/nx_pub_id_rsa root@pihyun.cn:/home/work/dcs_log/pub_log.tgz  ~/Downloads "
 
 # FCT
 alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt6'
