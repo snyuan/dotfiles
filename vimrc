@@ -702,9 +702,8 @@ let s:header = [
 
 let s:footer = [
       \ '+-------------------------------------------+',
-      \ '|            ThinkVim ^_^                   |',
-      \ '|    Talk is cheap Show me the code         |',
-      \ '|                                           |',
+      \ '|               ThinkVim ^_^                |',
+      \ '|       Talk is cheap Show me the code      |',
       \ '+-------------------------------------------+',
       \ ]
 
