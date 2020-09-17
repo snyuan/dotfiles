@@ -32,11 +32,11 @@ alias l='ls -la'
 alias h='ls -lh'
 alias b='cd -'
 alias desk='cd ~/Desktop'
-alias se="vim ~/.zshrc"
+alias vz="vim ~/.zshrc"
 alias ss="source ~/.zshrc"
 alias mz="more ~/.zshrc"
 alias vv="vim ~/.vimrc"
-alias vz="vim ~/.zshrc"
+alias sv="source ~/.vimrc"
 alias vp="vim patch.diff"
 # alias vundle="vim +PluginInstall +qall"
 alias vimplug="vim +PlugInstall +qall"
@@ -77,8 +77,11 @@ alias sr="svn revert"
 
 # GIT commands
 alias gd="git diff"
-alias gds="git diff --compact-summary"
-alias gdr="git diff master origin/master"
+alias gdn="git diff --name-only origin/master"
+alias gdc="git diff --compact-summary origin/master"
+alias gds="git diff  --stat origin/master"
+alias gdr="git diff origin/master"
+alias gdv="git difftool --tool=vimdiff --no-prompt origin/master"
 alias gp="git pull"
 alias gpl="git pull"
 alias gps="git push"
@@ -118,6 +121,8 @@ alias t4='cd ~/opt/fsa/root/trunk4'
 alias t4w='cd ~/opt/fsa/root/trunk4/web'
 alias t5='cd ~/opt/fsa/root/trunk5'
 alias t5w='cd ~/opt/fsa/root/trunk5/web'
+alias t6='cd ~/opt/fsa/root/trunk6'
+alias t6w='cd ~/opt/fsa/root/trunk6/web'
 alias trunk='cd ~/opt/fsa/root/trunk'
 alias trunkw='cd ~/opt/fsa/root/trunkw'
 alias br3='cd ~/opt/fsa/root/3.x'
