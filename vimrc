@@ -462,6 +462,7 @@ map <silent> gc :Gcommit<CR>
 map <silent> gC :Gcommit -a<CR>
 map <silent> gl :gitv<CR>
 map <silent> gs :Gstatus<CR>
+map <silent> gd :G diff --name-only origin/master<CR>
 " search the word in current register
 nnoremap <silent> <leader>g  /<C-R>"<CR>
 
@@ -477,7 +478,7 @@ map <F1> :retab!<bar>EraseBadWhitespace<CR>
 map <F2> :TagbarToggle<CR>
 map <F3> :G blame<CR>
 map <F4> :G log<CR>
-map <F5> :G status -uno<CR>
+map <F5> :G diff --stat origin/master<CR>
 map <F6> :G diff <CR>
 map <F8> :NERDTreeToggle<CR>
 " below list buffers and switch to input buffer
@@ -702,9 +703,8 @@ let s:header = [
 
 let s:footer = [
       \ '+-------------------------------------------+',
-      \ '|            ThinkVim ^_^                   |',
-      \ '|    Talk is cheap Show me the code         |',
-      \ '|                                           |',
+      \ '|               ThinkVim ^_^                |',
+      \ '|       Talk is cheap Show me the code      |',
       \ '+-------------------------------------------+',
       \ ]
 
@@ -752,6 +752,7 @@ nnoremap <Leader>e :e<CR>
 nnoremap <Leader>w :wa<CR>
 nnoremap <Leader>wa :wa<CR>
 nnoremap <Leader>qa :qa<CR>
+nnoremap <Leader>cq :cq<CR>
 nnoremap <C-c> :qa<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
@@ -852,7 +853,10 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGreen ctermbg=0
 nnoremap <leader>is :<c-u>ImpSort!<cr>
 
 " vim-fugitive {{{
-vmap <silent> u <esc>:Gdiff<cr>gv:diffget<cr><c-w><c-w>ZZ
+vmap <silent> u <esc>:Gvdiff origin/master<cr>gv:diffget<cr><c-w><c-w>ZZ
+nnoremap <Leader>gd :Gvdiff origin/master<cr>gv:diffget<cr><c-w><c-w>ZZ
+nnoremap <Leader>df :Gvdiff origin/master<cr>gv:diffget<cr><c-w><c-w>ZZ
+
 " }}}
 
 
