@@ -58,6 +58,7 @@ alias dot="cd ~/dotfiles"
 alias upwx="scp -i ~/keys/nx_pub_id_rsa ~/dev/codegit/energy-info-export/dist/w.tgz root@pihyun.cn:/home/app/weixin"
 alias distwx="scp -i ~/keys/nx_pub_id_rsa ~/dev/codegit/energy-info-export/dist.zip root@pihyun.cn:/u01/wars/dist.zip"
 alias pdcslog="scp -i ~/keys/nx_pub_id_rsa root@pihyun.cn:/home/work/dcs_log/pub_log.tgz  ~/Downloads "
+alias hdcslog="scp -i ~/keys/nx_pub_id_rsa root@pihyun.cn:/home/work/dcs_log/hotel_log.tgz  ~/Downloads "
 
 # FCT
 alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt6'
@@ -220,4 +221,10 @@ export PATH=~/bin:/home/andy/.local/bin:/home/andy/bin:$PATH
 
 unsetopt share_history
 
+# see https://dev.to/matrixersp/how-to-use-fzf-with-ripgrep-to-selectively-ignore-vcs-files-4e27
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
+alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git}" | fzf'
+alias vifi='vim $(fzfi)'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
