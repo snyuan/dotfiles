@@ -754,6 +754,7 @@ nnoremap <Leader>wa :wa<CR>
 nnoremap <Leader>qa :qa<CR>
 nnoremap <Leader>cq :cq<CR>
 nnoremap <C-c> :qa<CR>
+nnoremap <C-q> :cq<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>wq :wq<CR>
 
