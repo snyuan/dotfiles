@@ -221,4 +221,10 @@ export PATH=~/bin:/home/andy/.local/bin:/home/andy/bin:$PATH
 
 unsetopt share_history
 
+# see https://dev.to/matrixersp/how-to-use-fzf-with-ripgrep-to-selectively-ignore-vcs-files-4e27
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --no-ignore-vcs'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
+alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git}" | fzf'
+alias vifi='vim $(fzfi)'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
