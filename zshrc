@@ -196,6 +196,19 @@ s5926(){
       eval '~/bin/fsash.sh 10.59.26.$1 $2'
   fi
 }
+s5950(){
+  # eval '/usr/bin/s5926 $1'
+  if [ -z "$2" ]
+  then
+     eval '~/bin/fsash.sh 10.59.50.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval '~/bin/fsash.sh 10.59.50.$1'
+  else
+      eval '~/bin/fsash.sh 10.59.50.$1 $2'
+  fi
+}
 alias ssh97="~/bin/fsash.sh 172.17.94.97"
 s92(){
   # eval '/usr/bin/s5926 $1'
