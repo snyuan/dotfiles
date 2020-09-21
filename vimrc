@@ -133,7 +133,8 @@ Plug 'w0rp/ale', { 'on':  'ALEToggle' }  " Asynchronous Lint Engine, 默认开�
     Plug 'ervandew/supertab'
     Plug 'tweekmonster/impsort.vim'
     Plug 'frazrepo/vim-rainbow'  " show bracket pair in color
-    Plug 'leafOfTree/vim-vue-plugin'
+    Plug 'posva/vim-vue'
+    Plug 'leafgarland/typescript-vim'
 " Initialize plugin system
 call plug#end()
 
@@ -400,11 +401,14 @@ let maplocalleader="\<space>"
 " }}}
 
 " ale {{{
-let g:airline#extensions#ale#enabled = 1
-noremap <Leader>at :ALEToggle<CR>
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+    let g:airline#extensions#ale#enabled = 1
+    noremap <Leader>at :ALEToggle<CR>
+    let g:ale_sign_error = '>>'
+    let g:ale_sign_warning = '--'
 
+    let g:ale_fixers = {'vue': ['remove_trailing_lines', 'trim_whitespace']}
+    let g:ale_fix_on_save = 1
+    let g:ale_linter_aliases = {'vue': ['javascript', 'html', 'scss']}
 " }}}
 
 highlight clear SignColumn
@@ -418,6 +422,7 @@ autocmd BufNewFile,BufRead *.aspx set filetype=javascript
 autocmd BufNewFile,BufRead *.ascx set filetype=javascript
 autocmd BufNewFile,BufRead *.asmx set filetype=aspnet
 autocmd BufNewFile,BufRead *.py set foldmethod=indent
+autocmd BufRead,BufNewFile *.vue set filetype=html
 " :au BufAdd,BufNewFile * nested tab sball   " To open each buffer in its own tabpage"
 
 " NERDTree {{{
@@ -505,7 +510,8 @@ noremap bd :bd<CR>
 
 
 " FZF {{{
-    nnoremap <leader><leader> :FZF<cr>
+    " nnoremap <leader><leader> :FZF<cr>
+    nnoremap <leader><leader> :All<cr>
     nnoremap <silent> <leader>f :FZF<cr>
     nnoremap <silent> <leader>F :FZF ~<cr>
     nnoremap <leader>ff :Files<cr>
@@ -517,8 +523,11 @@ noremap bd :bd<CR>
 
     " see https://dev.to/matrixersp/how-to-use-fzf-with-ripgrep-to-selectively-ignore-vcs-files-4e27
     command! -bang -nargs=*  All
-  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*}"', 'down': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
+  \ call fzf#run(fzf#wrap({'source': 'rg --files --hidden --no-ignore-vcs --glob "!{node_modules/*,.git/*,*/*.jpg,src/assets/*,*/*.png,*/*.gif,*/*.doc,*/*.docx,*/*.xls,*/*.xlsx,*/*.zip,*/*.tgz,*/*.ppt,*/*.pptx}"', 'down': '40%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi --reverse' }))
     nnoremap <silent> <leader>o :All<cr>
+
+    autocmd! VimEnter * command! -nargs=* -complete=file Ag :call fzf#vim#ag_raw(<q-args>, fzf#wrap('ag-raw',
+\ {'options': "--preview 'coderay $(cut -d: -f1 <<< {}) 2> /dev/null | sed -n $(cut -d: -f2 <<< {}),\\$p | head -".&lines."'"}))
 " }}}
 
 "=============================== NERDComment ==================================
@@ -873,18 +882,6 @@ function! GitStatus()
     set statusline+=%{GitStatus()}
 " }}}
 
-" vim-vue-plugin {{{
-let g:vim_vue_plugin_use_coffee = 1
-let g:vim_vue_plugin_use_typescript = 1
-let g:vim_vue_plugin_use_less = 1
-let g:vim_vue_plugin_use_sass = 1
-let g:vim_vue_plugin_use_scss = 1
-let g:vim_vue_plugin_use_stylus = 1
-let g:vim_vue_plugin_has_init_indent = 1
-let g:vim_vue_plugin_highlight_vue_attr = 1
-let g:vim_vue_plugin_use_foldexpr  = 1
-let g:vim_vue_plugin_debug = 1
-" }}}
 " Platform
 function! MySys()
   if has("win32")
