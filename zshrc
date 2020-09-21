@@ -59,6 +59,8 @@ alias upwx="scp -i ~/keys/nx_pub_id_rsa ~/dev/codegit/energy-info-export/dist/w.
 alias distwx="scp -i ~/keys/nx_pub_id_rsa ~/dev/codegit/energy-info-export/dist.zip root@pihyun.cn:/u01/wars/dist.zip"
 alias pdcslog="scp -i ~/keys/nx_pub_id_rsa root@pihyun.cn:/home/work/dcs_log/pub_log.tgz  ~/Downloads "
 alias hdcslog="scp -i ~/keys/nx_pub_id_rsa root@pihyun.cn:/home/work/dcs_log/hotel_log.tgz  ~/Downloads "
+alias pdcslog_mac="scp -i ~/keys/id_rsa_2048_yuanye  root@pihyun.cn:/home/work/dcs_log/pub_log.tgz ~/Downloads "
+alias hdcslog_mac="scp -i ~/keys/id_rsa_2048_yuanye  root@pihyun.cn:/home/work/dcs_log/hotel_log.tgz ~/Downloads "
 
 # FCT
 alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt6'
