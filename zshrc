@@ -198,6 +198,19 @@ s5926(){
       eval '~/bin/fsash.sh 10.59.26.$1 $2'
   fi
 }
+s5928(){
+  # eval '/usr/bin/s5928 $1'
+  if [ -z "$2" ]
+  then
+     eval '~/bin/fsash.sh 10.59.28.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval '~/bin/fsash.sh 10.59.28.$1'
+  else
+      eval '~/bin/fsash.sh 10.59.28.$1 $2'
+  fi
+}
 s5950(){
   # eval '/usr/bin/s5926 $1'
   if [ -z "$2" ]
