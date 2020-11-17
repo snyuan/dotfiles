@@ -63,7 +63,7 @@ alias pdcslog_mac="scp -i ~/keys/id_rsa_2048_yuanye  root@pihyun.cn:/home/work/d
 alias hdcslog_mac="scp -i ~/keys/id_rsa_2048_yuanye  root@pihyun.cn:/home/work/dcs_log/hotel_log.tgz ~/Downloads "
 
 # FCT
-alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt6'
+alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt7'
 alias emsd='/opt/forticlient/epctrl -d'
 
 # SVN commands
@@ -80,7 +80,7 @@ alias sr="svn revert"
 # GIT commands
 alias ga="git add"
 alias gc="git checkout"
-alias gcm="git commit"
+alias gcm="git commit --amend"
 alias gco="git checkout"
 alias gd="git diff"
 alias gdn="git diff --name-only origin/master"
@@ -88,8 +88,8 @@ alias gdc="git diff --compact-summary origin/master"
 alias gds="git diff  --stat origin/master"
 alias gdr="git diff origin/master"
 alias gdv="git difftool --tool=vimdiff --no-prompt origin/master"
-alias gp="git pull"
-alias gpl="git pull"
+alias gp="git pull --rebase"
+alias gpl="git pull --rebase"
 alias gps="git push"
 alias gpu="git push"
 alias gst="git status -uno"
@@ -225,6 +225,18 @@ s5950(){
     eval '~/bin/fsash.sh 10.59.50.$1'
   else
       eval '~/bin/fsash.sh 10.59.50.$1 $2'
+  fi
+}
+s59(){
+  if [ -z "$2" ]
+  then
+     eval '~/bin/fsash.sh 10.59.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval '~/bin/fsash.sh 10.59.$1'
+  else
+      eval '~/bin/fsash.sh 10.59.$1 $2'
   fi
 }
 alias ssh97="~/bin/fsash.sh 172.17.94.97"
