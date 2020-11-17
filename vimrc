@@ -239,14 +239,14 @@ map <silent> ff :set mouse-=a<CR>
 set wildmode=longest,list
 set wildmenu
 
-colorscheme desert256
-colorscheme wombat
 colorscheme monokai
 colorscheme jellybeans
 set background=dark    " Setting dark mode
 " autocmd ColorScheme janah highlight Normal ctermbg=235
 " colorscheme janah
 colorscheme synic
+colorscheme desert256
+colorscheme wombat
 
 " pymode python-mode setting {{{
     " override go-to.definition key shortcut to ctrl-]
