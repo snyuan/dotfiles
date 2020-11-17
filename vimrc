@@ -135,6 +135,7 @@ Plug 'w0rp/ale', { 'on':  'ALEToggle' }  " Asynchronous Lint Engine, 默认开�
     Plug 'frazrepo/vim-rainbow'  " show bracket pair in color
     Plug 'posva/vim-vue'
     Plug 'leafgarland/typescript-vim'
+    Plug 'Chiel92/vim-autoformat'
 " Initialize plugin system
 call plug#end()
 
@@ -155,11 +156,12 @@ set showmode            " Show current mode.
 set ruler               " Show the line and column numbers of the cursor.
 set number              " Show the line numbers on the left side.
 set formatoptions+=o    " Continue comment marker in new lines.
+filetype plugin indent on
 set textwidth=0         " Hard-wrap long lines as you type them.
-set expandtab           " Insert spaces when TAB is pressed.
 set tabstop=4           " Render TABs using this many spaces.
 set softtabstop=4
 set shiftwidth=4        " Indentation amount for < and > commands.
+set expandtab           " Insert spaces when TAB is pressed.
 
 set noerrorbells        " No beeps.
 set modeline            " Enable modeline.
@@ -317,9 +319,9 @@ let maplocalleader="\<space>"
   " }}}1
 
 " Syntastic {{{2
-      noremap <Leader>sd :SyntasticDisableToggle<CR> 
-      noremap <Leader>st :SyntasticToggleMode<CR> 
-      noremap <Leader>sc :SyntasticCheck<CR> 
+      noremap <Leader>sd :SyntasticDisableToggle<CR>
+      noremap <Leader>st :SyntasticToggleMode<CR>
+      noremap <Leader>sc :SyntasticCheck<CR>
       set statusline+=%#warningmsg#
       set statusline+=%{SyntasticStatuslineFlag()}
       set statusline+=%*
@@ -467,7 +469,7 @@ map <silent> gc :Gcommit<CR>
 map <silent> gC :Gcommit -a<CR>
 map <silent> gl :gitv<CR>
 map <silent> gs :Gstatus<CR>
-map <silent> gd :G diff --name-only origin/master<CR>
+map <silent> gn :G diff --name-only origin/master<CR>
 " search the word in current register
 nnoremap <silent> <leader>g  /<C-R>"<CR>
 
@@ -481,10 +483,12 @@ cabbr <expr> %% expand('%:p:h')
 
 map <F1> :retab!<bar>EraseBadWhitespace<CR>
 map <F2> :TagbarToggle<CR>
-map <F3> :G blame<CR>
-map <F4> :G log<CR>
-map <F5> :G diff --stat origin/master<CR>
-map <F6> :G diff <CR>
+noremap <F3> :Autoformat<CR>
+noremap <F4> :set st=4 sw=4 et <bar>IndentGuidesToggle<CR>
+map <F5> :Gvdiff origin/master<cr>gv:diffget<cr><c-w><c-w>ZZ
+map <F6> :G blame<CR>
+map <F7> :G diff --stat origin/master<CR>
+" map <F7> :G log<CR>
 map <F8> :NERDTreeToggle<CR>
 " below list buffers and switch to input buffer
 " nnoremap <F9> :buffers<CR>:buffer<Space>
@@ -857,11 +861,13 @@ let g:ycm_server_log_level = 'debug'
   " }}}
 
 " vim-indent-guides
+nnoremap <leader>ig :set st=4 sw=4 et <bar>IndentGuidesToggle<CR>
 let g:indent_guides_auto_colors = 0
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'startify']
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=DarkBlue   ctermbg=8
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGreen ctermbg=0
+
 
 " impSort
 " autocmd BufWritePre *.py ImpSort!  " sort improt of python automatically on save
@@ -869,8 +875,8 @@ nnoremap <leader>is :<c-u>ImpSort!<cr>
 
 " vim-fugitive {{{
 vmap <silent> u <esc>:Gvdiff origin/master<cr>gv:diffget<cr><c-w><c-w>ZZ
-nnoremap <Leader>gd :Gvdiff origin/master<cr>gv:diffget<cr><c-w><c-w>ZZ
-nnoremap <Leader>df :Gvdiff origin/master<cr>gv:diffget<cr><c-w><c-w>ZZ
+nnoremap <Leader>gd  :Gvdiff origin/master<cr>gv:diffget<cr><c-w><c-w>ZZ
+nnoremap <Leader>df  :G diff <CR>
 
 " }}}
 

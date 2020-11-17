@@ -78,6 +78,10 @@ alias sg="svn log --limit 3"
 alias sr="svn revert"
 
 # GIT commands
+alias ga="git add"
+alias gc="git checkout"
+alias gcm="git commit"
+alias gco="git checkout"
 alias gd="git diff"
 alias gdn="git diff --name-only origin/master"
 alias gdc="git diff --compact-summary origin/master"
@@ -94,7 +98,6 @@ alias gsw="git status web"
 alias gswm="git status web|grep modified"
 alias gsmw="git status web|grep modified"
 alias gg="git log -5"
-alias gc="git checkout"
 
 #ReviewBoard
 alias rd="rb_genco_git diff"
@@ -143,7 +146,7 @@ alias webdb='sqlite3 ~/opt/fsa/etc/FortiSandboxGUIBackend.db'
 alias rptdb='sqlite3 ~/opt/fsa/drive0/private/db/reports.db'
 alias storage='cd ~/opt/fsa/Storage'
 alias rmall='/bin/rm -fr ~/opt/fsa/Storage/* ~/opt/fsa/ramdisk/*.db  ~/opt/fsa/drive0/private/statistics/*'
-alias rmst='sudo /bin/rm -fr ~/opt/fsa/Storage/* ~/opt/fsa/ramdisk/*.db'
+alias rmst='sudo /bin/rm -fr ~/opt/fsa/Storage/quarantine/* ~/opt/fsa/Storage/suspicious/* ~/opt/fsa/Storage/clean/* ~/opt/fsa/ramdisk/*.db'
 alias pvt='cd ~/opt/fsa/drive0/private'
 
 alias fsan='cd ~/opt/fsa_hd'
@@ -196,6 +199,19 @@ s5926(){
     eval '~/bin/fsash.sh 10.59.26.$1'
   else
       eval '~/bin/fsash.sh 10.59.26.$1 $2'
+  fi
+}
+s5928(){
+  # eval '/usr/bin/s5928 $1'
+  if [ -z "$2" ]
+  then
+     eval '~/bin/fsash.sh 10.59.28.$1 123admin'
+  elif [ $2 -eq "0" ]
+  then
+    echo nopassword
+    eval '~/bin/fsash.sh 10.59.28.$1'
+  else
+      eval '~/bin/fsash.sh 10.59.28.$1 $2'
   fi
 }
 s5950(){
