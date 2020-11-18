@@ -1,0 +1,9 @@
+ # 将单词释义保存到桌面的wordlist.html文件下，若文件不存在，则初始化文件（填充html的标签）
+  FILE=$HOME/Desktop/wordlist.html
+  INIT_STRING='<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>MAC-Wordlist</title></head><body><table></table></body></html>'
+  # 格式化单词释义（把单词，音标，解释分离开）
+  RESULT=$(echo -e $1 | sed -E 's#([a-zA-Z]+) (\|[^\|]+\|)(.*)#<tr><td>\1</td><td>\2</td><td>\3</td></tr>\r#g')
+  if [ ! -f $FILE ]; then
+  echo $INIT_STRING > $FILE
+  fi
+  sed -Ei '' "s#(</table>)#$RESULT\1#g" $FILE
