@@ -272,3 +272,4 @@ alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git
 alias vifi='vim $(fzfi)'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 RPROMPT='%*'
+PROMPT='%F{green}%*%f:%F{blue}%~%f %% '
