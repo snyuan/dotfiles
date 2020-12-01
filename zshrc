@@ -272,4 +272,4 @@ alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git
 alias vifi='vim $(fzfi)'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 RPROMPT='%*'
-PROMPT='%F{green}%*%f:%F{blue}%~%f %% '
+PROMPT='%F{green}%* ${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_sorin_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
