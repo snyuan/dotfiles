@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>509</string>
+	<key>AMApplicationVersion</key>
+	<string>2.10</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<false/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>268</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Dictionary</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>dictionaryNameArray</key>
+					<dict/>
+					<key>last selected dictionary URL</key>
+					<dict/>
+					<key>selectedIndex</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Get Definition of Word.action</string>
+				<key>ActionName</key>
+				<string>Get Definition of Word</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>dictionaryNameArray</key>
+					<array>
+						<string>牛津、朗文、剑桥、柯林斯四合一双解版 by梦里寻剑</string>
+						<string>现代汉语规范词典</string>
+						<string>牛津英汉汉英词典</string>
+					</array>
+					<key>last selected dictionary URL</key>
+					<string>/System/Library/AssetsV2/com_apple_MobileAsset_DictionaryServices_dictionaryOSX/4c39f0574a3c87c83f87cb8eba86a9dfdedb3b00.asset/AssetData/Simplified Chinese - English.dictionary</string>
+					<key>selectedIndex</key>
+					<integer>2</integer>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.GetWordDefinition</string>
+				<key>CFBundleVersion</key>
+				<string>268</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<true/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryText</string>
+				</array>
+				<key>Class Name</key>
+				<string>GetWordDefinition</string>
+				<key>InputUUID</key>
+				<string>84ABA3AC-228F-4B1F-AA9F-E2AC6A301BEC</string>
+				<key>Keywords</key>
+				<array>
+					<string>Text</string>
+					<string>Dictionary</string>
+					<string>Definition</string>
+					<string>Get</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>ECF77B80-444E-47A9-8F68-5C394855D577</string>
+				<key>UUID</key>
+				<string>119C3ABD-1559-4F3E-B358-00A59D0C25F6</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Dictionary</string>
+				</array>
+				<key>arguments</key>
+				<dict/>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>322.000000:242.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Get Definition of Word.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>2.0.3</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<dict/>
+					<key>CheckedForUserDefaultShell</key>
+					<dict/>
+					<key>inputMethod</key>
+					<dict/>
+					<key>shell</key>
+					<dict/>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.cocoa.string</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run Shell Script.action</string>
+				<key>ActionName</key>
+				<string>Run Shell Script</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>COMMAND_STRING</key>
+					<string> # 将单词释义保存到桌面的wordlist.html文件下，若文件不存在，则初始化文件（填充html的标签）
+  FILE=$HOME/Desktop/wordlist.html
+  INIT_STRING='&lt;!DOCTYPE html&gt;&lt;html lang="en"&gt;&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;MAC-Wordlist&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;table&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;'
+  # 格式化单词释义（把单词，音标，解释分离开）
+  RESULT=$(echo -e $1 | sed -E 's#([a-zA-Z]+) (\|[^\|]+\|)(.*)#&lt;tr&gt;&lt;td&gt;\1&lt;/td&gt;&lt;td&gt;\2&lt;/td&gt;&lt;td&gt;\3&lt;/td&gt;&lt;/tr&gt;\r#g')
+  if [ ! -f $FILE ]; then
+  echo $INIT_STRING &gt; $FILE
+  fi
+  sed -Ei '' "s#(&lt;/table&gt;)#$RESULT\1#g" $FILE</string>
+					<key>CheckedForUserDefaultShell</key>
+					<true/>
+					<key>inputMethod</key>
+					<integer>1</integer>
+					<key>shell</key>
+					<string>/bin/bash</string>
+					<key>source</key>
+					<string></string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.RunShellScript</string>
+				<key>CFBundleVersion</key>
+				<string>2.0.3</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunShellScriptAction</string>
+				<key>InputUUID</key>
+				<string>16C614F0-6AFD-43C1-B90A-6EFCD1C55742</string>
+				<key>Keywords</key>
+				<array>
+					<string>Shell</string>
+					<string>Script</string>
+					<string>Command</string>
+					<string>Run</string>
+					<string>Unix</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>1F8277ED-0777-4B4F-B878-A41CC7C92885</string>
+				<key>UUID</key>
+				<string>E9F94521-1C83-438C-98DB-8E3282EAD341</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<integer>0</integer>
+						<key>name</key>
+						<string>inputMethod</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>default value</key>
+						<false/>
+						<key>name</key>
+						<string>CheckedForUserDefaultShell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>1</string>
+					</dict>
+					<key>2</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>2</string>
+					</dict>
+					<key>3</key>
+					<dict>
+						<key>default value</key>
+						<string></string>
+						<key>name</key>
+						<string>COMMAND_STRING</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>3</string>
+					</dict>
+					<key>4</key>
+					<dict>
+						<key>default value</key>
+						<string>/bin/sh</string>
+						<key>name</key>
+						<string>shell</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>4</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>322.000000:567.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict>
+		<key>C460198B-43A8-4A67-BC88-D4166316A057</key>
+		<dict>
+			<key>from</key>
+			<string>119C3ABD-1559-4F3E-B358-00A59D0C25F6 - 119C3ABD-1559-4F3E-B358-00A59D0C25F6</string>
+			<key>to</key>
+			<string>E9F94521-1C83-438C-98DB-8E3282EAD341 - E9F94521-1C83-438C-98DB-8E3282EAD341</string>
+		</dict>
+	</dict>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>applicationBundleIDsByPath</key>
+		<dict/>
+		<key>applicationPaths</key>
+		<array/>
+		<key>inputTypeIdentifier</key>
+		<string>com.apple.Automator.text</string>
+		<key>outputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>presentationMode</key>
+		<integer>11</integer>
+		<key>processesInput</key>
+		<integer>0</integer>
+		<key>serviceInputTypeIdentifier</key>
+		<string>com.apple.Automator.text</string>
+		<key>serviceOutputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceProcessesInput</key>
+		<integer>0</integer>
+		<key>systemImageName</key>
+		<string>NSActionTemplate</string>
+		<key>useAutomaticInputType</key>
+		<integer>0</integer>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.servicesMenu</string>
+	</dict>
+</dict>
+</plist>
