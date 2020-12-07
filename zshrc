@@ -63,7 +63,7 @@ alias pdcslog_mac="scp -i ~/keys/id_rsa_2048_yuanye  root@pihyun.cn:/home/work/d
 alias hdcslog_mac="scp -i ~/keys/id_rsa_2048_yuanye  root@pihyun.cn:/home/work/dcs_log/hotel_log.tgz ~/Downloads "
 
 # FCT
-alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt7'
+alias vpn='sudo /opt/forticlient/vpn -s scm.van.corp.fortinet.com:443 -uayuan -pYY@ftnt8'
 alias emsd='/opt/forticlient/epctrl -d'
 
 # SVN commands
@@ -98,6 +98,7 @@ alias gsw="git status web"
 alias gswm="git status web|grep modified"
 alias gsmw="git status web|grep modified"
 alias gg="git log -5"
+# alias gcl="git clone --branch br_3-2_ui_migration  git@git.corp.fortinet.com:fsa/fortisandbox.git br_ui_migration" # git clone a branch to specific folder
 
 #ReviewBoard
 alias rd="rb_genco_git diff"
