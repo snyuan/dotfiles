@@ -98,6 +98,7 @@ alias gsw="git status web"
 alias gswm="git status web|grep modified"
 alias gsmw="git status web|grep modified"
 alias gg="git log -5"
+alias gclean="git clean -xdf"
 # alias gcl="git clone --branch br_3-2_ui_migration  git@git.corp.fortinet.com:fsa/fortisandbox.git br_ui_migration" # git clone a branch to specific folder
 
 #ReviewBoard
