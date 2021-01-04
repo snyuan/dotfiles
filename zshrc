@@ -78,7 +78,7 @@ alias sg="svn log --limit 3"
 alias sr="svn revert"
 
 # GIT commands
-alias ga="git add"
+alias gaweb="cd ~/opt/fsa/root/archive/web/; rm -r * ; cd ~/opt/fsa/root/trunk/;  git archive master web | tar -x -C ~/opt/fsa/root/archive; cd ~/opt/fsa/root/archive/web; git commit -am'update' ; git pull; git push"
 alias gc="git checkout"
 alias gcm="git commit --amend"
 alias gco="git checkout"
@@ -143,6 +143,7 @@ alias br23w='cd ~/opt/fsapy2/root/br3.1/web'
 alias sandbox='cd ~/opt/fsa/root/trunk/web/sandbox'
 alias fsadb='cd ~/opt/fsa/drive0/private/db-install'
 alias ramdisk='cd ~/opt/fsa/ramdisk/'
+alias ramdb='sqlite3 ~/opt/fsa/ramdisk/FortiSandboxGUI.db'
 alias guidb='sqlite3 ~/opt/fsa/ramdisk/FortiSandboxGUI.db'
 alias webdb='sqlite3 ~/opt/fsa/etc/FortiSandboxGUIBackend.db'
 alias rptdb='sqlite3 ~/opt/fsa/drive0/private/db/reports.db'
