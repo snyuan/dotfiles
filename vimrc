@@ -685,7 +685,8 @@ let g:startify_change_to_dir = 0
 " `2>/dev/null` makes the command fail quietly, so that when we are not
 " in a git repo, the list will be empty
 function! s:gitModified()
-    let files = systemlist('git ls-files -m 2>/dev/null')
+    " let files = systemlist('git ls-files -m 2>/dev/null')
+    let files = systemlist('git diff --name-only --relative origin/master 2>/dev/null')
     return map(files, "{'line': v:val, 'path': v:val}")
 endfunction
 

@@ -83,9 +83,9 @@ alias gc="git checkout"
 alias gcm="git commit --amend"
 alias gco="git checkout"
 alias gd="git diff"
-alias gdn="git diff --name-only origin/master"
-alias gdc="git diff --compact-summary origin/master"
-alias gds="git diff  --stat origin/master"
+alias gdn="git diff --name-only --relative origin/master"
+alias gdc="git diff --compact-summary --relative origin/master"
+alias gds="git diff  --stat --relative origin/master"
 alias gdr="git diff origin/master"
 alias gdv="git difftool --tool=vimdiff --no-prompt origin/master"
 alias gp="git pull --rebase"
@@ -273,5 +273,5 @@ export FZF_DEFAULT_OPTS='--height 96% --reverse --preview "cat {}"'
 alias fzfi='rg --files --hidden --follow --no-ignore-vcs -g "!{node_modules,.git,*.png,*.jpg,*.gif,src/assets/*}" | fzf'
 alias vifi='vim $(fzfi)'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-RPROMPT='%*'
+# RPROMPT='%*'
 PROMPT='%F{green}%* ${SSH_TTY:+"%F{9}%n%f%F{7}@%f%F{3}%m%f "}%F{4}${_prompt_sorin_pwd}%(!. %B%F{1}#%f%b.)${editor_info[keymap]} '
