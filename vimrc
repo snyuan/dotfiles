@@ -479,7 +479,7 @@ map <leader>p :!mkdir -p %:p:h<cr>
 map <leader>ni :set noautoindent<cr>
 
 map <silent>nn :set norelativenumber nonumber<CR>
-map <silent>sn :set norelativenumber nonumber<CR>
+map <silent>sn :set number relativenumber<CR>
 
 "Expression mappings.
 cabbr <expr> %% expand('%:p:h')
