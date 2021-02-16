@@ -478,8 +478,8 @@ map <silent> <leader>ev :e ~/.vimrc<cr>
 map <leader>p :!mkdir -p %:p:h<cr>
 map <leader>ni :set noautoindent<cr>
 
-map <silent>nn :set norelativenumber nonumber<CR>
-map <silent>sn :set number relativenumber<CR>
+map <leader>nn :set norelativenumber nonumber<CR>
+map <leader>sn :set number relativenumber<CR>
 
 "Expression mappings.
 cabbr <expr> %% expand('%:p:h')
